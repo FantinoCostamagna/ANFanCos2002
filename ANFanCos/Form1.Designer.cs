@@ -80,7 +80,7 @@
             // panelMenuPrincipal
             // 
             panelMenuPrincipal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panelMenuPrincipal.BackColor = SystemColors.MenuHighlight;
+            panelMenuPrincipal.BackColor = SystemColors.ActiveCaption;
             panelMenuPrincipal.Controls.Add(label16);
             panelMenuPrincipal.Controls.Add(label15);
             panelMenuPrincipal.Controls.Add(label14);
@@ -125,9 +125,9 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.BackColor = SystemColors.MenuHighlight;
+            label16.BackColor = Color.Transparent;
             label16.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.Location = new Point(1112, 538);
+            label16.Location = new Point(1101, 538);
             label16.Name = "label16";
             label16.Size = new Size(47, 21);
             label16.TabIndex = 35;
@@ -136,9 +136,9 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.BackColor = SystemColors.MenuHighlight;
+            label15.BackColor = Color.Transparent;
             label15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(1112, 475);
+            label15.Location = new Point(1102, 475);
             label15.Name = "label15";
             label15.Size = new Size(42, 21);
             label15.TabIndex = 34;
@@ -147,9 +147,9 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.BackColor = SystemColors.MenuHighlight;
+            label14.BackColor = Color.Transparent;
             label14.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label14.Location = new Point(1001, 604);
+            label14.Location = new Point(1009, 605);
             label14.Name = "label14";
             label14.Size = new Size(89, 20);
             label14.TabIndex = 33;
@@ -171,9 +171,9 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.BackColor = SystemColors.MenuHighlight;
+            label13.BackColor = Color.Transparent;
             label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(1052, 413);
+            label13.Location = new Point(1048, 413);
             label13.Name = "label13";
             label13.Size = new Size(152, 21);
             label13.TabIndex = 30;
@@ -182,9 +182,9 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.BackColor = SystemColors.MenuHighlight;
+            label12.BackColor = Color.Transparent;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(1085, 351);
+            label12.Location = new Point(1084, 351);
             label12.Name = "label12";
             label12.Size = new Size(89, 21);
             label12.TabIndex = 29;
@@ -193,7 +193,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.BackColor = SystemColors.MenuHighlight;
+            label11.BackColor = Color.Transparent;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.Location = new Point(1035, 289);
             label11.Name = "label11";
@@ -204,7 +204,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.BackColor = SystemColors.MenuHighlight;
+            label10.BackColor = Color.Transparent;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.Location = new Point(1059, 224);
             label10.Name = "label10";
@@ -215,7 +215,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.BackColor = SystemColors.MenuHighlight;
+            label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.Location = new Point(1094, 166);
             label9.Name = "label9";
@@ -351,7 +351,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.BackColor = SystemColors.MenuHighlight;
+            label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.Location = new Point(179, 374);
             label6.Name = "label6";
@@ -362,7 +362,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.BackColor = SystemColors.MenuHighlight;
+            label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(155, 298);
             label5.Name = "label5";
@@ -373,7 +373,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.BackColor = SystemColors.MenuHighlight;
+            label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(155, 234);
             label4.Name = "label4";
@@ -384,7 +384,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = SystemColors.MenuHighlight;
+            label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(155, 166);
             label3.Name = "label3";
@@ -523,7 +523,7 @@
             // TITULOPRINCIPAL
             // 
             TITULOPRINCIPAL.AutoSize = true;
-            TITULOPRINCIPAL.BackColor = SystemColors.Window;
+            TITULOPRINCIPAL.BackColor = Color.Transparent;
             TITULOPRINCIPAL.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             TITULOPRINCIPAL.Location = new Point(422, 9);
             TITULOPRINCIPAL.Name = "TITULOPRINCIPAL";
