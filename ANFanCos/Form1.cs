@@ -41,7 +41,6 @@ namespace ANFanCos
 
             //  Leer datos desde los TextBox
             string funcion = txtIngresarFunc.Text;
-
             double xi, xd, tolerancia;
             int iteraciones;
 
@@ -324,9 +323,6 @@ namespace ANFanCos
                 txtRaiz.Clear();
                 txtToleranciaUtilizada.Clear();
 
-                double xr = 0;
-                double xrAnterior = 0;
-                double error = double.MaxValue;
 
                 double fxi, fxd;
 
