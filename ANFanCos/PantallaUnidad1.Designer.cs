@@ -24,6 +24,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(APPANALISISNUMERICO));
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             panelMenuPrincipal = new Panel();
+            btnVolverMenu = new Button();
             label16 = new Label();
             label15 = new Label();
             label14 = new Label();
@@ -81,6 +82,8 @@
             // 
             panelMenuPrincipal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelMenuPrincipal.BackColor = SystemColors.ActiveCaption;
+            panelMenuPrincipal.BorderStyle = BorderStyle.FixedSingle;
+            panelMenuPrincipal.Controls.Add(btnVolverMenu);
             panelMenuPrincipal.Controls.Add(label16);
             panelMenuPrincipal.Controls.Add(label15);
             panelMenuPrincipal.Controls.Add(label14);
@@ -122,12 +125,24 @@
             panelMenuPrincipal.Size = new Size(1308, 643);
             panelMenuPrincipal.TabIndex = 1;
             // 
+            // btnVolverMenu
+            // 
+            btnVolverMenu.BackColor = Color.Beige;
+            btnVolverMenu.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnVolverMenu.Location = new Point(20, 11);
+            btnVolverMenu.Name = "btnVolverMenu";
+            btnVolverMenu.Size = new Size(111, 35);
+            btnVolverMenu.TabIndex = 36;
+            btnVolverMenu.Text = "VOLVER";
+            btnVolverMenu.UseVisualStyleBackColor = false;
+            btnVolverMenu.Click += this.btbVolverMenu_Click;
+            // 
             // label16
             // 
             label16.AutoSize = true;
             label16.BackColor = Color.Transparent;
             label16.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.Location = new Point(1101, 538);
+            label16.Location = new Point(1101, 507);
             label16.Name = "label16";
             label16.Size = new Size(47, 21);
             label16.TabIndex = 35;
@@ -138,7 +153,7 @@
             label15.AutoSize = true;
             label15.BackColor = Color.Transparent;
             label15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(1102, 475);
+            label15.Location = new Point(1102, 444);
             label15.Name = "label15";
             label15.Size = new Size(42, 21);
             label15.TabIndex = 34;
@@ -149,7 +164,7 @@
             label14.AutoSize = true;
             label14.BackColor = Color.Transparent;
             label14.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label14.Location = new Point(1009, 605);
+            label14.Location = new Point(984, 574);
             label14.Name = "label14";
             label14.Size = new Size(89, 20);
             label14.TabIndex = 33;
@@ -161,10 +176,10 @@
             txtConverge.BorderStyle = BorderStyle.FixedSingle;
             txtConverge.Enabled = false;
             txtConverge.Font = new Font("Segoe UI Symbol", 11.25F, FontStyle.Bold);
-            txtConverge.Location = new Point(1130, 602);
+            txtConverge.Location = new Point(1105, 571);
             txtConverge.Name = "txtConverge";
             txtConverge.ReadOnly = true;
-            txtConverge.Size = new Size(119, 27);
+            txtConverge.Size = new Size(180, 27);
             txtConverge.TabIndex = 32;
             txtConverge.TextAlign = HorizontalAlignment.Center;
             // 
@@ -173,7 +188,7 @@
             label13.AutoSize = true;
             label13.BackColor = Color.Transparent;
             label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(1048, 413);
+            label13.Location = new Point(1048, 382);
             label13.Name = "label13";
             label13.Size = new Size(152, 21);
             label13.TabIndex = 30;
@@ -184,7 +199,7 @@
             label12.AutoSize = true;
             label12.BackColor = Color.Transparent;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(1084, 351);
+            label12.Location = new Point(1084, 320);
             label12.Name = "label12";
             label12.Size = new Size(89, 21);
             label12.TabIndex = 29;
@@ -195,7 +210,7 @@
             label11.AutoSize = true;
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(1035, 289);
+            label11.Location = new Point(1035, 258);
             label11.Name = "label11";
             label11.Size = new Size(190, 21);
             label11.TabIndex = 28;
@@ -206,7 +221,7 @@
             label10.AutoSize = true;
             label10.BackColor = Color.Transparent;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(1059, 224);
+            label10.Location = new Point(1059, 193);
             label10.Name = "label10";
             label10.Size = new Size(142, 21);
             label10.TabIndex = 27;
@@ -214,10 +229,11 @@
             // 
             // label9
             // 
+            label9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(1094, 166);
+            label9.Location = new Point(1094, 135);
             label9.Name = "label9";
             label9.Size = new Size(71, 21);
             label9.TabIndex = 26;
@@ -229,10 +245,10 @@
             txtError.BorderStyle = BorderStyle.FixedSingle;
             txtError.Enabled = false;
             txtError.Font = new Font("Segoe UI Symbol", 11.25F, FontStyle.Bold);
-            txtError.Location = new Point(1001, 562);
+            txtError.Location = new Point(975, 530);
             txtError.Name = "txtError";
             txtError.ReadOnly = true;
-            txtError.Size = new Size(270, 27);
+            txtError.Size = new Size(310, 27);
             txtError.TabIndex = 25;
             txtError.TextAlign = HorizontalAlignment.Center;
             // 
@@ -242,10 +258,10 @@
             txtRaiz.BorderStyle = BorderStyle.FixedSingle;
             txtRaiz.Enabled = false;
             txtRaiz.Font = new Font("Segoe UI Symbol", 11.25F, FontStyle.Bold);
-            txtRaiz.Location = new Point(1001, 499);
+            txtRaiz.Location = new Point(975, 467);
             txtRaiz.Name = "txtRaiz";
             txtRaiz.ReadOnly = true;
-            txtRaiz.Size = new Size(248, 27);
+            txtRaiz.Size = new Size(310, 27);
             txtRaiz.TabIndex = 24;
             txtRaiz.TextAlign = HorizontalAlignment.Center;
             // 
@@ -255,10 +271,10 @@
             txtIntervaloUtilizado.BorderStyle = BorderStyle.FixedSingle;
             txtIntervaloUtilizado.Enabled = false;
             txtIntervaloUtilizado.Font = new Font("Segoe UI Symbol", 11.25F, FontStyle.Bold);
-            txtIntervaloUtilizado.Location = new Point(1001, 437);
+            txtIntervaloUtilizado.Location = new Point(975, 405);
             txtIntervaloUtilizado.Name = "txtIntervaloUtilizado";
             txtIntervaloUtilizado.ReadOnly = true;
-            txtIntervaloUtilizado.Size = new Size(248, 27);
+            txtIntervaloUtilizado.Size = new Size(310, 27);
             txtIntervaloUtilizado.TabIndex = 23;
             txtIntervaloUtilizado.TextAlign = HorizontalAlignment.Center;
             // 
@@ -268,10 +284,10 @@
             txtToleranciaUtilizada.BorderStyle = BorderStyle.FixedSingle;
             txtToleranciaUtilizada.Enabled = false;
             txtToleranciaUtilizada.Font = new Font("Segoe UI Symbol", 11.25F, FontStyle.Bold);
-            txtToleranciaUtilizada.Location = new Point(1001, 375);
+            txtToleranciaUtilizada.Location = new Point(975, 343);
             txtToleranciaUtilizada.Name = "txtToleranciaUtilizada";
             txtToleranciaUtilizada.ReadOnly = true;
-            txtToleranciaUtilizada.Size = new Size(248, 27);
+            txtToleranciaUtilizada.Size = new Size(310, 27);
             txtToleranciaUtilizada.TabIndex = 22;
             txtToleranciaUtilizada.TextAlign = HorizontalAlignment.Center;
             // 
@@ -281,10 +297,10 @@
             txtIteracionesRealizadas.BorderStyle = BorderStyle.FixedSingle;
             txtIteracionesRealizadas.Enabled = false;
             txtIteracionesRealizadas.Font = new Font("Segoe UI Symbol", 11.25F, FontStyle.Bold);
-            txtIteracionesRealizadas.Location = new Point(1001, 313);
+            txtIteracionesRealizadas.Location = new Point(975, 281);
             txtIteracionesRealizadas.Name = "txtIteracionesRealizadas";
             txtIteracionesRealizadas.ReadOnly = true;
-            txtIteracionesRealizadas.Size = new Size(248, 27);
+            txtIteracionesRealizadas.Size = new Size(310, 27);
             txtIteracionesRealizadas.TabIndex = 21;
             txtIteracionesRealizadas.TextAlign = HorizontalAlignment.Center;
             // 
@@ -294,10 +310,10 @@
             txtMetodoutilizado.BorderStyle = BorderStyle.FixedSingle;
             txtMetodoutilizado.Enabled = false;
             txtMetodoutilizado.Font = new Font("Segoe UI Symbol", 11.25F, FontStyle.Bold);
-            txtMetodoutilizado.Location = new Point(1001, 248);
+            txtMetodoutilizado.Location = new Point(975, 216);
             txtMetodoutilizado.Name = "txtMetodoutilizado";
             txtMetodoutilizado.ReadOnly = true;
-            txtMetodoutilizado.Size = new Size(248, 27);
+            txtMetodoutilizado.Size = new Size(310, 27);
             txtMetodoutilizado.TabIndex = 20;
             txtMetodoutilizado.TextAlign = HorizontalAlignment.Center;
             // 
@@ -307,10 +323,10 @@
             txtFuncionUtilizada.BorderStyle = BorderStyle.FixedSingle;
             txtFuncionUtilizada.Enabled = false;
             txtFuncionUtilizada.Font = new Font("Segoe UI Symbol", 11.25F, FontStyle.Bold);
-            txtFuncionUtilizada.Location = new Point(1001, 190);
+            txtFuncionUtilizada.Location = new Point(975, 159);
             txtFuncionUtilizada.Name = "txtFuncionUtilizada";
             txtFuncionUtilizada.ReadOnly = true;
-            txtFuncionUtilizada.Size = new Size(248, 27);
+            txtFuncionUtilizada.Size = new Size(310, 27);
             txtFuncionUtilizada.TabIndex = 19;
             txtFuncionUtilizada.TextAlign = HorizontalAlignment.Center;
             // 
@@ -320,9 +336,9 @@
             webView22.BackColor = SystemColors.ActiveBorder;
             webView22.CreationProperties = null;
             webView22.DefaultBackgroundColor = Color.White;
-            webView22.Location = new Point(453, 166);
+            webView22.Location = new Point(409, 159);
             webView22.Name = "webView22";
-            webView22.Size = new Size(396, 320);
+            webView22.Size = new Size(486, 398);
             webView22.TabIndex = 18;
             webView22.ZoomFactor = 1D;
             // 
@@ -331,7 +347,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(167, 427);
+            label8.Location = new Point(167, 444);
             label8.Name = "label8";
             label8.Size = new Size(20, 21);
             label8.TabIndex = 17;
@@ -342,7 +358,7 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(249, 427);
+            label7.Location = new Point(249, 444);
             label7.Name = "label7";
             label7.Size = new Size(26, 21);
             label7.TabIndex = 16;
@@ -353,7 +369,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(179, 374);
+            label6.Location = new Point(179, 391);
             label6.Name = "label6";
             label6.Size = new Size(80, 21);
             label6.TabIndex = 15;
@@ -364,7 +380,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(155, 298);
+            label5.Location = new Point(155, 315);
             label5.Name = "label5";
             label5.Size = new Size(155, 21);
             label5.TabIndex = 14;
@@ -375,7 +391,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(155, 234);
+            label4.Location = new Point(155, 239);
             label4.Name = "label4";
             label4.Size = new Size(160, 21);
             label4.TabIndex = 13;
@@ -394,7 +410,7 @@
             // 
             // btnCALCULAR
             // 
-            btnCALCULAR.BackColor = SystemColors.ControlDark;
+            btnCALCULAR.BackColor = Color.Beige;
             btnCALCULAR.FlatAppearance.BorderColor = Color.Black;
             btnCALCULAR.FlatAppearance.MouseDownBackColor = Color.Gray;
             btnCALCULAR.FlatAppearance.MouseOverBackColor = Color.Silver;
@@ -411,7 +427,7 @@
             // txtIngresarint2
             // 
             txtIngresarint2.Font = new Font("Segoe UI", 12F);
-            txtIngresarint2.Location = new Point(222, 398);
+            txtIngresarint2.Location = new Point(222, 415);
             txtIngresarint2.Name = "txtIngresarint2";
             txtIngresarint2.Size = new Size(81, 29);
             txtIngresarint2.TabIndex = 10;
@@ -420,7 +436,7 @@
             // txtIngresarint1
             // 
             txtIngresarint1.Font = new Font("Segoe UI", 12F);
-            txtIngresarint1.Location = new Point(141, 398);
+            txtIngresarint1.Location = new Point(141, 415);
             txtIngresarint1.Name = "txtIngresarint1";
             txtIngresarint1.Size = new Size(75, 29);
             txtIngresarint1.TabIndex = 9;
@@ -429,7 +445,7 @@
             // txtIngresartoler
             // 
             txtIngresartoler.Font = new Font("Segoe UI", 12F);
-            txtIngresartoler.Location = new Point(141, 322);
+            txtIngresartoler.Location = new Point(141, 339);
             txtIngresartoler.Name = "txtIngresartoler";
             txtIngresartoler.Size = new Size(162, 29);
             txtIngresartoler.TabIndex = 8;
@@ -439,7 +455,7 @@
             // txtIngresarIterac
             // 
             txtIngresarIterac.Font = new Font("Segoe UI", 12F);
-            txtIngresarIterac.Location = new Point(141, 258);
+            txtIngresarIterac.Location = new Point(141, 263);
             txtIngresarIterac.Name = "txtIngresarIterac";
             txtIngresarIterac.Size = new Size(162, 29);
             txtIngresarIterac.TabIndex = 7;
@@ -467,6 +483,8 @@
             comboBoxMETODO.Name = "comboBoxMETODO";
             comboBoxMETODO.Size = new Size(291, 33);
             comboBoxMETODO.TabIndex = 5;
+            comboBoxMETODO.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            comboBoxMETODO.SelectedValueChanged += comboBox1_SelectedIndexChanged;
             // 
             // txtSeleccionarMetodo
             // 
@@ -488,7 +506,7 @@
             label2.BorderStyle = BorderStyle.FixedSingle;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(1069, 122);
+            label2.Location = new Point(1071, 91);
             label2.Name = "label2";
             label2.Size = new Size(121, 27);
             label2.TabIndex = 3;
@@ -534,9 +552,8 @@
             // 
             // APPANALISISNUMERICO
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1308, 643);
             Controls.Add(panelMenuPrincipal);
@@ -591,5 +608,6 @@
         private Label label12;
         private Label label11;
         private Label label10;
+        private Button btnVolverMenu;
     }
 }

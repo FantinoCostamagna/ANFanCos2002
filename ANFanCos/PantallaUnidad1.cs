@@ -1,5 +1,6 @@
 using Calculus;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -16,16 +17,39 @@ namespace ANFanCos
 
         }
 
+        public void btbVolverMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PantallaMenú pantallaMenú = new PantallaMenú();
+            pantallaMenú.ShowDialog();
+            this.Close();
+        }
 
         void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
+        public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxMETODO.SelectedItem.ToString() == "Método abierto: Newton-Raphson/Tangente")
+            {
+                txtIngresarint2.Visible = false; // Oculta el TextBox
+                label7.Visible = false; // Oculta el Label
+                txtIngresarint2.Text = "1"; // completa el TextBox para que me valide la función, aunque no se use en el método abierto, para evitar errores al evaluar la función en el método abierto, ya que el método abierto solo necesita un intervalo inicial (xi) y no un intervalo completo (xi, xd) como el método cerrado. Al ocultar el TextBox y el Label, se evita que el usuario ingrese un valor para xd, lo cual podría causar confusión o errores al evaluar la función. Al completar el TextBox con un valor predeterminado (en este caso, "1"), se asegura que la función se evalúe correctamente sin necesidad de que el usuario ingrese un valor para xd.
+            }
+            else
+            {
+                txtIngresarint2.Visible = true; // Lo muestra
+                label7.Visible = true; // Lo muestra
+                txtIngresarint2.Text = ""; // Limpia el TextBox
+            }
+        }
+
         public void btnCALCULAR_Click(object sender, EventArgs e)
         {
 
-
+           
 
             if (string.IsNullOrWhiteSpace(txtIngresarFunc.Text) ||
                 string.IsNullOrWhiteSpace(txtIngresarIterac.Text) ||
@@ -43,6 +67,7 @@ namespace ANFanCos
             string funcion = txtIngresarFunc.Text;
             double xi, xd, tolerancia;
             int iteraciones;
+            
 
             if (!double.TryParse(txtIngresarint1.Text, out xi) ||
                 !double.TryParse(txtIngresarint2.Text, out xd) ||
@@ -65,14 +90,13 @@ namespace ANFanCos
             {
                 Biseccion(funcion, xi, xd, tolerancia, iteraciones);
             }
-            else if (metodo == "Método abierto: Newton - Raphson / Tangente")
+            else if (metodo == "Método abierto: Newton-Raphson/Tangente")
             {
-                MessageBox.Show("El método de Newton-Raphson / Tangente está en desarrollo");
-                //Tangente(funcion, xi, tolerancia, iteraciones);
+                EncontrarRaiz(funcion, xi, tolerancia, iteraciones, metodo);
             }
             else if (metodo == "Método abierto: Secante")
             {
-                Secante(funcion, xi, tolerancia, iteraciones);
+                EncontrarRaiz(funcion, xi, tolerancia, iteraciones, metodo);
             }
             else if (metodo == "Método cerrado: Regla Falsa")
             {
@@ -147,14 +171,7 @@ namespace ANFanCos
                         try { fxr = AnalizadorDeFunciones.EvaluaFx(xr); }
                         catch (Exception ex) { MessageBox.Show($"Error al evaluar xr: {ex.Message}"); return; }
 
-                        if (i > 1)
-                        {
-                            error = xr != 0 ? Math.Abs((xr - xrAnterior) / xr) : Math.Abs(xr - xrAnterior);
-                        }
-
-
-                        //txtError.AppendText($"Iteración {i}: xr = {xr}, error = {error}");
-
+                        error = Math.Abs((xr - xrAnterior) / xr);
 
                         if (Math.Abs(fxr) < tolerancia || error < tolerancia) //Si el valor absoluto de fxr es menor que la tolerancia o el error es menor que la tolerancia, se acepta la raíz y se devuelven los valores
                         {
@@ -264,10 +281,7 @@ namespace ANFanCos
                         try { fxr = AnalizadorDeFunciones.EvaluaFx(xr); }
                         catch (Exception ex) { MessageBox.Show($"Error al evaluar xr: {ex.Message}"); return; }
 
-                        if (i > 1)
-                        {
-                            error = xr != 0 ? Math.Abs((xr - xrAnterior) / xr) : Math.Abs(xr - xrAnterior);
-                        }
+                        error = Math.Abs((xr - xrAnterior) / xr);
 
 
                         if (Math.Abs(fxr) < tolerancia || error < tolerancia) //Si el valor absoluto de fxr es menor que la tolerancia o el error es menor que la tolerancia, se acepta la raíz y se devuelven los valores
@@ -311,8 +325,8 @@ namespace ANFanCos
                 txtConverge.AppendText("No");
             }
 
-            // Secante
-            void Secante(string funcion, double xi, double tolerancia, int iteraciones)
+            // EncontrarRaiz
+            void EncontrarRaiz(string funcion, double xi, double tolerancia, int iteraciones, string metodo)
             {
                 txtFuncionUtilizada.Clear();
                 txtConverge.Clear();
@@ -322,7 +336,6 @@ namespace ANFanCos
                 txtIteracionesRealizadas.Clear();
                 txtRaiz.Clear();
                 txtToleranciaUtilizada.Clear();
-
 
                 double fxi, fxd;
 
@@ -354,7 +367,7 @@ namespace ANFanCos
                     return;
                 }
 
-                else if (Math.Abs(fxd) < tolerancia)
+                else if (metodo == "Secante" && Math.Abs(fxd) < tolerancia)
                 {
                     MessageBox.Show($"La raíz es: {xd}");
                     return;
@@ -362,80 +375,116 @@ namespace ANFanCos
 
                 else
                 {
-                    // Algoritmo de Regla Falsa, es el mismo en la Secante
-                    for (int i = 1; i <= iteraciones;)
-                    {
-                        xr = (fxd * xi - fxi * xd) / (fxd - fxi);
-                        double fxr;
-                        try { fxr = AnalizadorDeFunciones.EvaluaFx(xr); }
-                        catch (Exception ex) { MessageBox.Show($"Error al evaluar xr: {ex.Message}"); return; }
 
-                        if (i > 1)
+                    double xr = 0;
+                    double xrAnterior = 0;
+                    double error = 0;
+                    double derivada = 0;
+
+                    for (int i = 1; i < iteraciones; i++)
+                    {
+                        xr = CalcularXR(metodo, funcion, xi, xd, tolerancia, derivada);
+
+                        double fxr;
+                        fxr = AnalizadorDeFunciones.EvaluaFx(xr);
+
+                        if (double.IsNaN(fxr))
                         {
-                            error = xr != 0 ? Math.Abs((xr - xrAnterior) / xr) : Math.Abs(xr - xrAnterior);
+                            MessageBox.Show("El método diverge. No encuentra raíz");
+                            return;
                         }
 
+                        
+                        error = Math.Abs((xr - xrAnterior) / xr);
 
-                        if (Math.Abs(fxr) < tolerancia || error < tolerancia) //Si el valor absoluto de fxr es menor que la tolerancia o el error es menor que la tolerancia, se acepta la raíz y se devuelven los valores
+                        if (metodo == "Método abierto: Secante" &&  Math.Abs(fxr) < tolerancia || error < tolerancia) //es solo para que muestre correctamente el intervalo utilizado
                         {
                             txtFuncionUtilizada.Text = funcion;
                             txtRaiz.AppendText($" {xr.ToString("F5")}");
                             txtIteracionesRealizadas.Text = ($"{i}" + " / " + txtIngresarIterac.Text);
                             txtIntervaloUtilizado.Text = txtIngresarint1.Text + " , " + txtIngresarint2.Text;
-                            txtMetodoutilizado.AppendText("Secante");
+                            txtMetodoutilizado.AppendText(metodo.ToString());
                             txtToleranciaUtilizada.AppendText($"{tolerancia}");
                             txtError.AppendText($" {error.ToString("F5")}" + " < " + "Tolerancia aceptada");
                             txtConverge.AppendText("Si");
                             return;
                         }
 
-                        else if (fxi * fxr < 0)
+                        if (Math.Abs(fxr) < tolerancia || error < tolerancia)
                         {
-                            xd = xr;
-                            fxd = fxr;
+                            txtFuncionUtilizada.Text = funcion;
+                            txtRaiz.AppendText($" {xr.ToString("F5")}");
+                            txtIteracionesRealizadas.Text = ($"{i}" + " / " + txtIngresarIterac.Text);
+                            txtIntervaloUtilizado.Text = txtIngresarint1.Text + " , " + " - ";//aca no se muestra el xd, que yo declare igual para que no me rompa la validación
+                            txtMetodoutilizado.AppendText(metodo.ToString());
+                            txtToleranciaUtilizada.AppendText($"{tolerancia}");
+                            txtError.AppendText($" {error.ToString("F5")}" + " < " + "Tolerancia aceptada");
+                            txtConverge.AppendText("Si");
+                            return;
+                        }
+
+                        else if (metodo == "Método abierto: Secante")
+                        {
+                            xi = xr;
                         }
                         else
                         {
-                            xi = xr;
-                            fxi = fxr;
+                            xi = xd;
+                            xd = xr;
                         }
+                        
 
                         xrAnterior = xr;
-                        i++;
 
                     }
+
                     // Si se alcanza el número máximo de iteraciones sin converger, se muestran los resultados finales obtenidos
                     MessageBox.Show("Se alcanzó el número máximo de iteraciones sin converger a la raíz dentro de la tolerancia especificada, se devuelve ultimo valor de xr");
                     txtFuncionUtilizada.Text = funcion;
                     txtIteracionesRealizadas.Text = txtIngresarIterac.Text;
-                    txtIntervaloUtilizado.Text = txtIngresarint1.Text + ", " + txtIngresarint2.Text;
-                    txtMetodoutilizado.AppendText("Secante");
+                    txtIntervaloUtilizado.Text = txtIngresarint1.Text + " , " + " - ";
+                    txtMetodoutilizado.AppendText(metodo.ToString());
                     txtToleranciaUtilizada.AppendText($"{tolerancia}");
                     txtError.AppendText($" {error.ToString("F6")}");
                     txtRaiz.AppendText($"{xr.ToString("F5")}");
                     txtConverge.AppendText("No");
+                    return;
+
                 }
 
-                
-            }
 
-            double derivada;
-
-            void CalcularXR()
-            {
-                derivada = AnalizadorDeFunciones.Dx(xi);
-                if (derivada < tolerancia || double.IsNaN(derivada))
+                double CalcularXR(string metodo, string funcion, double xi, double xd, double tolerancia, double derivada)
                 {
-                    MessageBox.Show("El método diverge, no encuentra raíz");
+                    double fxi = AnalizadorDeFunciones.EvaluaFx(xi);
+                    double fxd = AnalizadorDeFunciones.EvaluaFx(xd);
+                    derivada = AnalizadorDeFunciones.Dx(xi);
+
+                    if (metodo == "Método abierto: Secante")
+                    {
+
+                        double xr = (fxd * xi - fxi * xd) / (fxd - fxi);
+                        return xr;
+                    }
+
+
+                    if (metodo == "Método abierto: Newton-Raphson/Tangente" && derivada < tolerancia || double.IsNaN(derivada))
+                    {
+                        MessageBox.Show("El método diverge, no encuentra raíz");
+                        double xr = xi - fxi / derivada;
+                        return xr; // Devuelve el valor actual de xr, aunque no se ha encontrado una raíz válida
+
+                    }
+                    else
+                    {
+                        double xr = xi - fxi / derivada;
+                        return xr;
+                        
+                    }
                 }
-                else
-                {
-                    //seguir
-                }
+
             }
 
         }
-
 
     }
 }
