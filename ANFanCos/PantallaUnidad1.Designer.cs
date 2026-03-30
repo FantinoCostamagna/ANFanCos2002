@@ -24,6 +24,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(APPANALISISNUMERICO));
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             panelMenuPrincipal = new Panel();
+            panel6 = new Panel();
+            panel5 = new Panel();
+            panel2 = new Panel();
             btnVolverMenu = new Button();
             label16 = new Label();
             label15 = new Label();
@@ -41,7 +44,6 @@
             txtIteracionesRealizadas = new TextBox();
             txtMetodoutilizado = new TextBox();
             txtFuncionUtilizada = new TextBox();
-            webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
@@ -60,8 +62,14 @@
             label1 = new Label();
             txtIngresarDatos = new Label();
             TITULOPRINCIPAL = new Label();
+            panel1 = new Panel();
+            panel4 = new Panel();
+            panel3 = new Panel();
+            webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            panel7 = new Panel();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             panelMenuPrincipal.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView22).BeginInit();
             SuspendLayout();
             // 
@@ -83,6 +91,9 @@
             panelMenuPrincipal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelMenuPrincipal.BackColor = SystemColors.ActiveCaption;
             panelMenuPrincipal.BorderStyle = BorderStyle.FixedSingle;
+            panelMenuPrincipal.Controls.Add(panel6);
+            panelMenuPrincipal.Controls.Add(panel5);
+            panelMenuPrincipal.Controls.Add(panel2);
             panelMenuPrincipal.Controls.Add(btnVolverMenu);
             panelMenuPrincipal.Controls.Add(label16);
             panelMenuPrincipal.Controls.Add(label15);
@@ -100,7 +111,6 @@
             panelMenuPrincipal.Controls.Add(txtIteracionesRealizadas);
             panelMenuPrincipal.Controls.Add(txtMetodoutilizado);
             panelMenuPrincipal.Controls.Add(txtFuncionUtilizada);
-            panelMenuPrincipal.Controls.Add(webView22);
             panelMenuPrincipal.Controls.Add(label8);
             panelMenuPrincipal.Controls.Add(label7);
             panelMenuPrincipal.Controls.Add(label6);
@@ -119,11 +129,35 @@
             panelMenuPrincipal.Controls.Add(label1);
             panelMenuPrincipal.Controls.Add(txtIngresarDatos);
             panelMenuPrincipal.Controls.Add(TITULOPRINCIPAL);
+            panelMenuPrincipal.Controls.Add(panel1);
+            panelMenuPrincipal.Controls.Add(webView22);
+            panelMenuPrincipal.Controls.Add(panel7);
             panelMenuPrincipal.Dock = DockStyle.Fill;
             panelMenuPrincipal.Location = new Point(0, 0);
             panelMenuPrincipal.Name = "panelMenuPrincipal";
             panelMenuPrincipal.Size = new Size(1308, 643);
             panelMenuPrincipal.TabIndex = 1;
+            // 
+            // panel6
+            // 
+            panel6.Location = new Point(844, 155);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(108, 413);
+            panel6.TabIndex = 40;
+            // 
+            // panel5
+            // 
+            panel5.Location = new Point(410, 542);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(452, 15);
+            panel5.TabIndex = 39;
+            // 
+            // panel2
+            // 
+            panel2.Location = new Point(422, 152);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(428, 15);
+            panel2.TabIndex = 38;
             // 
             // btnVolverMenu
             // 
@@ -135,7 +169,7 @@
             btnVolverMenu.TabIndex = 36;
             btnVolverMenu.Text = "VOLVER";
             btnVolverMenu.UseVisualStyleBackColor = false;
-            btnVolverMenu.Click += this.btbVolverMenu_Click;
+            btnVolverMenu.Click += btbVolverMenu_Click;
             // 
             // label16
             // 
@@ -330,18 +364,6 @@
             txtFuncionUtilizada.TabIndex = 19;
             txtFuncionUtilizada.TextAlign = HorizontalAlignment.Center;
             // 
-            // webView22
-            // 
-            webView22.AllowExternalDrop = true;
-            webView22.BackColor = SystemColors.ActiveBorder;
-            webView22.CreationProperties = null;
-            webView22.DefaultBackgroundColor = Color.White;
-            webView22.Location = new Point(409, 159);
-            webView22.Name = "webView22";
-            webView22.Size = new Size(486, 398);
-            webView22.TabIndex = 18;
-            webView22.ZoomFactor = 1D;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -518,7 +540,7 @@
             label1.BackColor = Color.Transparent;
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(608, 122);
+            label1.Location = new Point(596, 122);
             label1.Name = "label1";
             label1.Size = new Size(95, 27);
             label1.TabIndex = 2;
@@ -550,6 +572,50 @@
             TITULOPRINCIPAL.Text = "UNIDAD 1: RAÍCES DE FUNCIONES";
             TITULOPRINCIPAL.TextAlign = ContentAlignment.TopCenter;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(panel4);
+            panel1.Controls.Add(panel3);
+            panel1.Location = new Point(155, 155);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(273, 419);
+            panel1.TabIndex = 37;
+            // 
+            // panel4
+            // 
+            panel4.Location = new Point(267, 375);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(428, 44);
+            panel4.TabIndex = 39;
+            // 
+            // panel3
+            // 
+            panel3.Location = new Point(267, 401);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(428, 15);
+            panel3.TabIndex = 39;
+            // 
+            // webView22
+            // 
+            webView22.AllowExternalDrop = true;
+            webView22.BackColor = SystemColors.ButtonHighlight;
+            webView22.CreationProperties = null;
+            webView22.DefaultBackgroundColor = Color.White;
+            webView22.Enabled = false;
+            webView22.Location = new Point(222, 159);
+            webView22.Name = "webView22";
+            webView22.Size = new Size(628, 398);
+            webView22.TabIndex = 18;
+            webView22.ZoomFactor = 1D;
+            // 
+            // panel7
+            // 
+            panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Location = new Point(965, 75);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(330, 546);
+            panel7.TabIndex = 41;
+            // 
             // APPANALISISNUMERICO
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -565,6 +631,7 @@
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             panelMenuPrincipal.ResumeLayout(false);
             panelMenuPrincipal.PerformLayout();
+            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)webView22).EndInit();
             ResumeLayout(false);
         }
@@ -609,5 +676,12 @@
         private Label label11;
         private Label label10;
         private Button btnVolverMenu;
+        private Panel panel1;
+        private Panel panel6;
+        private Panel panel5;
+        private Panel panel2;
+        private Panel panel4;
+        private Panel panel3;
+        private Panel panel7;
     }
 }

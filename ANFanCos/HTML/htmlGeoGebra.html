@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+			<script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+			<style>
+				html, body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				}
+				#ggb-element {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				}
+			</style>
+		</head>
+	<body>
+		<div id="ggb-element"></div>
+
+		<script>
+			var ggbApp = new GGBApplet({
+			appName: "graphing",
+			showToolBar: false,
+			showAlgebraInput: false,
+			showMenuBar: false,
+			enableLabelDrags: false,
+			appletOnLoad: function() {
+			window.ggbListo = true;
+
+			// Redimensionar dockPanelParent
+			setTimeout(() => {
+			var dock = document.getElementById('dockPanelParent');
+			if (dock) {
+			dock.style.width = '0px';
+			dock.style.minWidth = '0px';
+			dock.style.display = 'none';
+			}
+			// Ajustar ggb-element para ocupar todo
+			var graphDiv = document.getElementById('ggb-element');
+			graphDiv.style.left = '0';
+			graphDiv.style.width = '100%';
+			}, 100);
+			}
+			}, true);
+
+			document.addEventListener("DOMContentLoaded", function() {
+			ggbApp.inject('ggb-element');
+			});
+
+			function dibujarFuncion(funcion) {
+			if (window.ggbListo) {
+			try { ggbApp.evalCommand("Delete(f)"); } catch(e) {}
+			ggbApp.evalCommand("f(x) = " + funcion);
+			} else {
+			setTimeout(function() { dibujarFuncion(funcion); }, 100);
+			}
+			}
+		</script>
+	</body>
+</html>

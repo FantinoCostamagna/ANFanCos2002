@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+	</head>
+	<body>
+		<div id="ggb-element" style="width: 100%; height: 100%;"></div>
+
+		<script>
+			var ggbApp = new GGBApplet({
+			"appName": "graphing",
+			"showToolBar": true,
+			"showAlgebraInput": true,
+			"showMenuBar": true,
+			"appletOnLoad": function() {}
+			}, true);
+
+			window.onload = function() { ggbApp.inject('ggb-element'); };
+
+			function dibujarFuncion(funcion) {
+			ggbApp.evalCommand("Delete(f)"); // Borra función anterior
+			ggbApp.evalCommand("f(x) = " + funcion);
+			}
+		</script>
+	</body>
+</html>
