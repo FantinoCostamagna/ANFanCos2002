@@ -15,18 +15,15 @@ namespace ANFanCos
         public APPANALISISNUMERICO()
         {
             InitializeComponent();
-            InicializarWebView();
+
+            this.Load += InicializarWebView;
             // Cargar GeoGebra al presionar el boton calcular
         }
 
-        private async void InicializarWebView()
+        private async void InicializarWebView(object sender, EventArgs e)
         {
-            await webView22.EnsureCoreWebView2Async(null);
-
-            string rutaHtml = System.IO.Path.Combine(Application.StartupPath, "HTML", "htmlGeoGebra.html");
-            string url = $"file:///{rutaHtml.Replace("\\", "/")}";
-            
-            webView22.CoreWebView2.Navigate(url);
+           await webView22.EnsureCoreWebView2Async(null);
+           webView22.CoreWebView2.Navigate("https://www.geogebra.org/classic#classic.c");
         }
 
         public void btbVolverMenu_Click(object sender, EventArgs e)
@@ -107,6 +104,13 @@ namespace ANFanCos
                 MessageBox.Show("Función no válida");
                 return;
             }
+
+            if (funcion.Contains("log(")) // Reemplaza "log(" por "ln(" para que geogebra logaritmo natural
+            {
+                funcion = funcion.Replace("log(", "ln(");
+            }
+            string comandoGeoGebra = $"f(x) = {funcion}"; // Define la función en GeoGebra, usando el comando adecuado
+            webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.evalCommand('{comandoGeoGebra}');"); // Llama a la función JavaScript para dibujar la función en GeoGebra
 
             string metodo = comboBoxMETODO.SelectedItem.ToString();
 

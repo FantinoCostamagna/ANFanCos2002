@@ -24,9 +24,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(APPANALISISNUMERICO));
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             panelMenuPrincipal = new Panel();
-            panel6 = new Panel();
-            panel5 = new Panel();
-            panel2 = new Panel();
             btnVolverMenu = new Button();
             label16 = new Label();
             label15 = new Label();
@@ -62,14 +59,10 @@
             label1 = new Label();
             txtIngresarDatos = new Label();
             TITULOPRINCIPAL = new Label();
-            panel1 = new Panel();
-            panel4 = new Panel();
-            panel3 = new Panel();
-            webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
             panel7 = new Panel();
+            webView22 = new Microsoft.Web.WebView2.WinForms.WebView2();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             panelMenuPrincipal.SuspendLayout();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView22).BeginInit();
             SuspendLayout();
             // 
@@ -91,9 +84,6 @@
             panelMenuPrincipal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelMenuPrincipal.BackColor = SystemColors.ActiveCaption;
             panelMenuPrincipal.BorderStyle = BorderStyle.FixedSingle;
-            panelMenuPrincipal.Controls.Add(panel6);
-            panelMenuPrincipal.Controls.Add(panel5);
-            panelMenuPrincipal.Controls.Add(panel2);
             panelMenuPrincipal.Controls.Add(btnVolverMenu);
             panelMenuPrincipal.Controls.Add(label16);
             panelMenuPrincipal.Controls.Add(label15);
@@ -129,35 +119,13 @@
             panelMenuPrincipal.Controls.Add(label1);
             panelMenuPrincipal.Controls.Add(txtIngresarDatos);
             panelMenuPrincipal.Controls.Add(TITULOPRINCIPAL);
-            panelMenuPrincipal.Controls.Add(panel1);
-            panelMenuPrincipal.Controls.Add(webView22);
             panelMenuPrincipal.Controls.Add(panel7);
+            panelMenuPrincipal.Controls.Add(webView22);
             panelMenuPrincipal.Dock = DockStyle.Fill;
             panelMenuPrincipal.Location = new Point(0, 0);
             panelMenuPrincipal.Name = "panelMenuPrincipal";
             panelMenuPrincipal.Size = new Size(1308, 643);
             panelMenuPrincipal.TabIndex = 1;
-            // 
-            // panel6
-            // 
-            panel6.Location = new Point(844, 155);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(108, 413);
-            panel6.TabIndex = 40;
-            // 
-            // panel5
-            // 
-            panel5.Location = new Point(410, 542);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(452, 15);
-            panel5.TabIndex = 39;
-            // 
-            // panel2
-            // 
-            panel2.Location = new Point(422, 152);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(428, 15);
-            panel2.TabIndex = 38;
             // 
             // btnVolverMenu
             // 
@@ -369,7 +337,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(167, 444);
+            label8.Location = new Point(91, 444);
             label8.Name = "label8";
             label8.Size = new Size(20, 21);
             label8.TabIndex = 17;
@@ -380,7 +348,7 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(249, 444);
+            label7.Location = new Point(173, 444);
             label7.Name = "label7";
             label7.Size = new Size(26, 21);
             label7.TabIndex = 16;
@@ -391,7 +359,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(179, 391);
+            label6.Location = new Point(103, 391);
             label6.Name = "label6";
             label6.Size = new Size(80, 21);
             label6.TabIndex = 15;
@@ -402,7 +370,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(155, 315);
+            label5.Location = new Point(79, 315);
             label5.Name = "label5";
             label5.Size = new Size(155, 21);
             label5.TabIndex = 14;
@@ -413,7 +381,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(155, 239);
+            label4.Location = new Point(79, 239);
             label4.Name = "label4";
             label4.Size = new Size(160, 21);
             label4.TabIndex = 13;
@@ -424,7 +392,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(155, 166);
+            label3.Location = new Point(79, 166);
             label3.Name = "label3";
             label3.Size = new Size(137, 21);
             label3.TabIndex = 12;
@@ -438,7 +406,7 @@
             btnCALCULAR.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnCALCULAR.FlatStyle = FlatStyle.Flat;
             btnCALCULAR.Font = new Font("Century", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCALCULAR.Location = new Point(125, 484);
+            btnCALCULAR.Location = new Point(49, 484);
             btnCALCULAR.Name = "btnCALCULAR";
             btnCALCULAR.Size = new Size(190, 90);
             btnCALCULAR.TabIndex = 11;
@@ -449,7 +417,7 @@
             // txtIngresarint2
             // 
             txtIngresarint2.Font = new Font("Segoe UI", 12F);
-            txtIngresarint2.Location = new Point(222, 415);
+            txtIngresarint2.Location = new Point(146, 415);
             txtIngresarint2.Name = "txtIngresarint2";
             txtIngresarint2.Size = new Size(81, 29);
             txtIngresarint2.TabIndex = 10;
@@ -458,7 +426,7 @@
             // txtIngresarint1
             // 
             txtIngresarint1.Font = new Font("Segoe UI", 12F);
-            txtIngresarint1.Location = new Point(141, 415);
+            txtIngresarint1.Location = new Point(65, 415);
             txtIngresarint1.Name = "txtIngresarint1";
             txtIngresarint1.Size = new Size(75, 29);
             txtIngresarint1.TabIndex = 9;
@@ -467,7 +435,7 @@
             // txtIngresartoler
             // 
             txtIngresartoler.Font = new Font("Segoe UI", 12F);
-            txtIngresartoler.Location = new Point(141, 339);
+            txtIngresartoler.Location = new Point(65, 339);
             txtIngresartoler.Name = "txtIngresartoler";
             txtIngresartoler.Size = new Size(162, 29);
             txtIngresartoler.TabIndex = 8;
@@ -477,7 +445,7 @@
             // txtIngresarIterac
             // 
             txtIngresarIterac.Font = new Font("Segoe UI", 12F);
-            txtIngresarIterac.Location = new Point(141, 263);
+            txtIngresarIterac.Location = new Point(65, 263);
             txtIngresarIterac.Name = "txtIngresarIterac";
             txtIngresarIterac.Size = new Size(162, 29);
             txtIngresarIterac.TabIndex = 7;
@@ -487,7 +455,7 @@
             // txtIngresarFunc
             // 
             txtIngresarFunc.Font = new Font("Segoe UI", 12F);
-            txtIngresarFunc.Location = new Point(141, 190);
+            txtIngresarFunc.Location = new Point(65, 190);
             txtIngresarFunc.Name = "txtIngresarFunc";
             txtIngresarFunc.Size = new Size(162, 29);
             txtIngresarFunc.TabIndex = 6;
@@ -540,7 +508,7 @@
             label1.BackColor = Color.Transparent;
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(596, 122);
+            label1.Location = new Point(562, 122);
             label1.Name = "label1";
             label1.Size = new Size(95, 27);
             label1.TabIndex = 2;
@@ -554,7 +522,7 @@
             txtIngresarDatos.CausesValidation = false;
             txtIngresarDatos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             txtIngresarDatos.ForeColor = SystemColors.ActiveCaptionText;
-            txtIngresarDatos.Location = new Point(141, 122);
+            txtIngresarDatos.Location = new Point(65, 122);
             txtIngresarDatos.Name = "txtIngresarDatos";
             txtIngresarDatos.Size = new Size(173, 27);
             txtIngresarDatos.TabIndex = 1;
@@ -572,28 +540,14 @@
             TITULOPRINCIPAL.Text = "UNIDAD 1: RAÍCES DE FUNCIONES";
             TITULOPRINCIPAL.TextAlign = ContentAlignment.TopCenter;
             // 
-            // panel1
+            // panel7
             // 
-            panel1.Controls.Add(panel4);
-            panel1.Controls.Add(panel3);
-            panel1.Location = new Point(155, 155);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(273, 419);
-            panel1.TabIndex = 37;
-            // 
-            // panel4
-            // 
-            panel4.Location = new Point(267, 375);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(428, 44);
-            panel4.TabIndex = 39;
-            // 
-            // panel3
-            // 
-            panel3.Location = new Point(267, 401);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(428, 15);
-            panel3.TabIndex = 39;
+            panel7.BackColor = Color.Transparent;
+            panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Location = new Point(965, 75);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(330, 546);
+            panel7.TabIndex = 41;
             // 
             // webView22
             // 
@@ -601,20 +555,11 @@
             webView22.BackColor = SystemColors.ButtonHighlight;
             webView22.CreationProperties = null;
             webView22.DefaultBackgroundColor = Color.White;
-            webView22.Enabled = false;
-            webView22.Location = new Point(222, 159);
+            webView22.Location = new Point(280, 152);
             webView22.Name = "webView22";
-            webView22.Size = new Size(628, 398);
+            webView22.Size = new Size(660, 446);
             webView22.TabIndex = 18;
             webView22.ZoomFactor = 1D;
-            // 
-            // panel7
-            // 
-            panel7.BorderStyle = BorderStyle.FixedSingle;
-            panel7.Location = new Point(965, 75);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(330, 546);
-            panel7.TabIndex = 41;
             // 
             // APPANALISISNUMERICO
             // 
@@ -631,7 +576,6 @@
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             panelMenuPrincipal.ResumeLayout(false);
             panelMenuPrincipal.PerformLayout();
-            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)webView22).EndInit();
             ResumeLayout(false);
         }
@@ -676,12 +620,6 @@
         private Label label11;
         private Label label10;
         private Button btnVolverMenu;
-        private Panel panel1;
-        private Panel panel6;
-        private Panel panel5;
-        private Panel panel2;
-        private Panel panel4;
-        private Panel panel3;
         private Panel panel7;
     }
 }
