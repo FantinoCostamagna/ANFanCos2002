@@ -211,6 +211,12 @@ namespace ANFanCos
                             txtToleranciaUtilizada.AppendText($"{tolerancia}");
                             txtError.AppendText($" {error.ToString("F5")}" + " < " + "Tolerancia aceptada");
                             txtConverge.AppendText("Sí");
+
+                            string comandoRaiz = $"Raiz = ({xr.ToString(System.Globalization.CultureInfo.InvariantCulture)}, 0)";
+                            webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.evalCommand('{comandoRaiz}');"); // Agrega el punto de la raiz al gráfico de Geogebra
+                            webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setPointStyle('Raiz', 2);"); // Cambia el estilo del punto a un circulo relleno
+                            webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setColor('Raiz', 255, 0, 0);"); // Cambia el color del punto a rojo
+
                             return;
                         }
 
@@ -323,6 +329,12 @@ namespace ANFanCos
                             txtToleranciaUtilizada.AppendText($"{tolerancia}");
                             txtError.AppendText($" {error.ToString("F5")}" + " < " + "Tolerancia aceptada");
                             txtConverge.AppendText("Si");
+
+                            string comandoRaiz = $"Raiz = ({xr.ToString(System.Globalization.CultureInfo.InvariantCulture)}, 0)";
+                            webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.evalCommand('{comandoRaiz}');"); // Agrega el punto de la raiz al gráfico de Geogebra
+                            webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setPointStyle('Raiz', 2);"); // Cambia el estilo del punto a un circulo relleno
+                            webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setColor('Raiz', 255, 0, 0);"); // Cambia el color del punto a rojo
+
                             return;
                         }
 
@@ -440,6 +452,12 @@ namespace ANFanCos
                                 txtToleranciaUtilizada.AppendText($"{tolerancia}");
                                 txtError.AppendText($" {error.ToString("F5")}" + " < " + "Tolerancia aceptada");
                                 txtConverge.AppendText("Si");
+
+                                string comandoRaiz = $"Raiz = ({xr.ToString(System.Globalization.CultureInfo.InvariantCulture)}, 0)";
+                                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.evalCommand('{comandoRaiz}');"); // Agrega el punto de la raiz al gráfico de Geogebra
+                                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setPointStyle('Raiz', 2);"); // Cambia el estilo del punto a un circulo relleno
+                                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setColor('Raiz', 255, 0, 0);"); // Cambia el color del punto a rojo
+
                                 return;
                             }
 
@@ -453,6 +471,12 @@ namespace ANFanCos
                                 txtToleranciaUtilizada.AppendText($"{tolerancia}");
                                 txtError.AppendText($" {error.ToString("F5")}" + " < " + "Tolerancia aceptada");
                                 txtConverge.AppendText("Si");
+
+                                string comandoRaiz = $"Raiz = ({xr.ToString(System.Globalization.CultureInfo.InvariantCulture)}, 0)";
+                                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.evalCommand('{comandoRaiz}');"); // Agrega el punto de la raiz al gráfico de Geogebra
+                                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setPointStyle('Raiz', 2);"); // Cambia el estilo del punto a un circulo relleno
+                                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setColor('Raiz', 255, 0, 0);"); // Cambia el color del punto a rojo
+
                                 return;
                             }
 
