@@ -246,6 +246,13 @@ namespace ANFanCos
                 txtError.AppendText($" {error.ToString("F6")}");
                 txtRaiz.AppendText($"{xr.ToString("F5")}");
                 txtConverge.AppendText("");
+
+                string comandoRaiz2 = $"Raiz = ({xr.ToString(System.Globalization.CultureInfo.InvariantCulture)}, 0)";
+                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.evalCommand('{comandoRaiz2}');"); // Agrega el punto de la raiz al gráfico de Geogebra
+                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setPointStyle('Raiz', 2);"); // Cambia el estilo del punto a un circulo relleno
+                webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setColor('Raiz', 255, 0, 0);"); // Cambia el color del punto a rojo
+
+                return;
             }
 
 
@@ -364,6 +371,13 @@ namespace ANFanCos
                     txtError.AppendText($" {error.ToString("F6")}");
                     txtRaiz.AppendText($"{xr.ToString("F5")}");
                     txtConverge.AppendText("No");
+
+                    string comandoRaiz2 = $"Raiz = ({xr.ToString(System.Globalization.CultureInfo.InvariantCulture)}, 0)";
+                    webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.evalCommand('{comandoRaiz2}');"); // Agrega el punto de la raiz al gráfico de Geogebra
+                    webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setPointStyle('Raiz', 2);"); // Cambia el estilo del punto a un circulo relleno
+                    webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setColor('Raiz', 255, 0, 0);"); // Cambia el color del punto a rojo
+
+                    return;
 
                 }
             }
@@ -497,14 +511,30 @@ namespace ANFanCos
 
                         // Si se alcanza el número máximo de iteraciones sin converger, se muestran los resultados finales obtenidos
                         MessageBox.Show("Se alcanzó el número máximo de iteraciones sin converger a la raíz dentro de la tolerancia especificada, se devuelve ultimo valor de xr");
+                        if (metodo == "Método abierto: Secante")
+                        { 
+                            txtIntervaloUtilizado.Text = txtIngresarint1.Text + " , " + txtIngresarint2.Text; 
+                        }
+                        else
+                        {
+                            txtIntervaloUtilizado.Text = txtIngresarint1.Text + " , " + " - ";
+                        }
                         txtFuncionUtilizada.Text = funcion;
                         txtIteracionesRealizadas.Text = txtIngresarIterac.Text;
-                        txtIntervaloUtilizado.Text = txtIngresarint1.Text + " , " + " - ";
                         txtMetodoutilizado.AppendText(metodo.ToString());
                         txtToleranciaUtilizada.AppendText($"{tolerancia}");
                         txtError.AppendText($" {error.ToString("F6")}");
                         txtRaiz.AppendText($"{xr.ToString("F5")}");
                         txtConverge.AppendText("No");
+
+                        
+
+                        string comandoRaiz2 = $"Raiz = ({xr.ToString(System.Globalization.CultureInfo.InvariantCulture)}, 0)";
+                        webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.evalCommand('{comandoRaiz2}');"); // Agrega el punto de la raiz al gráfico de Geogebra
+                        webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setPointStyle('Raiz', 2);"); // Cambia el estilo del punto a un circulo relleno
+                        webView22.CoreWebView2.ExecuteScriptAsync($"ggbApplet.setColor('Raiz', 255, 0, 0);"); // Cambia el color del punto a rojo
+
+
                         return;
 
                     }
@@ -524,13 +554,14 @@ namespace ANFanCos
                         }
 
 
-                        if (metodo == "Método abierto: Newton-Raphson/Tangente" && derivada < tolerancia || double.IsNaN(derivada))
+                        if (metodo == "Método abierto: Newton-Raphson/Tangente" && derivada < tolerancia || metodo == "Método abierto: Newton-Raphson/Tangente" && double.IsNaN(derivada))
                         {
                             MessageBox.Show("El método diverge, no encuentra raíz");
+
                             double xr = xi - fxi / derivada;
                             return xr; // Devuelve el valor actual de xr, aunque no se ha encontrado una raíz válida
 
-                        }
+                    }
                         else
                         {
                             double xr = xi - fxi / derivada;

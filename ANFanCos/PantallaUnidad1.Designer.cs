@@ -572,6 +572,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "APPANALISISNUMERICO";
             Text = "APP ANALISIS NUMERICO";
+            WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             panelMenuPrincipal.ResumeLayout(false);
