@@ -34,6 +34,7 @@
             labelAPPanalisisnumerico = new Label();
             btnVolverMenu = new Button();
             lblUNIDAD1 = new Label();
+            lblUNIDAD2 = new Label();
             panelMenuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -43,6 +44,7 @@
             panelMenuPrincipal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelMenuPrincipal.BackColor = SystemColors.ActiveCaption;
             panelMenuPrincipal.BorderStyle = BorderStyle.FixedSingle;
+            panelMenuPrincipal.Controls.Add(lblUNIDAD2);
             panelMenuPrincipal.Controls.Add(pictureBox1);
             panelMenuPrincipal.Controls.Add(labelAPPanalisisnumerico);
             panelMenuPrincipal.Controls.Add(btnVolverMenu);
@@ -100,6 +102,20 @@
             lblUNIDAD1.TextAlign = ContentAlignment.TopCenter;
             lblUNIDAD1.Click += lblUNIDAD1_Click;
             // 
+            // lblUNIDAD2
+            // 
+            lblUNIDAD2.AutoSize = true;
+            lblUNIDAD2.BackColor = Color.Beige;
+            lblUNIDAD2.BorderStyle = BorderStyle.FixedSingle;
+            lblUNIDAD2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblUNIDAD2.Location = new Point(394, 242);
+            lblUNIDAD2.Name = "lblUNIDAD2";
+            lblUNIDAD2.Size = new Size(507, 39);
+            lblUNIDAD2.TabIndex = 39;
+            lblUNIDAD2.Text = "UNIDAD 2: SISTEMAS DE ECUACIONES";
+            lblUNIDAD2.TextAlign = ContentAlignment.TopCenter;
+            lblUNIDAD2.Click += lblUNIDAD2_Click;
+            // 
             // PantallaMenú
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -123,5 +139,6 @@
         private Label lblUNIDAD1;
         private Label labelAPPanalisisnumerico;
         private PictureBox pictureBox1;
+        private Label lblUNIDAD2;
     }
 }
