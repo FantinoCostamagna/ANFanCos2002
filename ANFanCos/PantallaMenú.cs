@@ -17,7 +17,7 @@ namespace ANFanCos
 
         private void PantallaMenú_Load(object sender, EventArgs e)
         {
-            
+
 
         }
 
@@ -31,7 +31,14 @@ namespace ANFanCos
             this.Hide();
             APPANALISISNUMERICO APPANALISISNUMERICO = new APPANALISISNUMERICO();
             APPANALISISNUMERICO.Show();
-            
+
+        }
+
+        private void lblUNIDAD2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PantallaUnidad2 APP = new PantallaUnidad2();
+            APP.Show();
         }
     }
 }
