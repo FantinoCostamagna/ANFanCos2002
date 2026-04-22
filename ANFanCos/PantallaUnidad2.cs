@@ -92,7 +92,16 @@ namespace ANFanCos
 
         void btnCALCULAR_Click(object sender, EventArgs e)
         {
-            if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
+            if (string.IsNullOrWhiteSpace(txtIngresarDim.Text) ||
+                (comboBoxMETODO.SelectedIndex == -1))
+            //string.IsNullOrWhiteSpace(txtIngresarIterac.Text) || 
+            //string.IsNullOrWhiteSpace(txtIngresartoler.Text) || Para cuando hagamos el Gauss seidel, lo ponemos dentro del if (comboboxmetodo = "gauss seidel")
+            {
+                MessageBox.Show("Tenés que completar todos los datos y elegir el método");
+                return;
+            }
+
+                if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
             {
 
                 int dimension = int.Parse(txtIngresarDim.Text);

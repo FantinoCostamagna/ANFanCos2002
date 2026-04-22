@@ -44,7 +44,7 @@
             txtIngresarIterac = new TextBox();
             txtIngresarDim = new TextBox();
             comboBoxMETODO = new ComboBox();
-            txtIngresarDatos = new Label();
+            lblIngresarDatos = new Label();
             TITULOPRINCIPAL = new Label();
             lblUNIDAD2 = new Label();
             btnVolverMenu = new Button();
@@ -84,7 +84,7 @@
             panel1.Controls.Add(txtIngresarIterac);
             panel1.Controls.Add(txtIngresarDim);
             panel1.Controls.Add(comboBoxMETODO);
-            panel1.Controls.Add(txtIngresarDatos);
+            panel1.Controls.Add(lblIngresarDatos);
             panel1.Controls.Add(TITULOPRINCIPAL);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
@@ -240,19 +240,19 @@
             comboBoxMETODO.TabIndex = 5;
             comboBoxMETODO.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // txtIngresarDatos
+            // lblIngresarDatos
             // 
-            txtIngresarDatos.AutoSize = true;
-            txtIngresarDatos.BackColor = Color.Transparent;
-            txtIngresarDatos.BorderStyle = BorderStyle.FixedSingle;
-            txtIngresarDatos.CausesValidation = false;
-            txtIngresarDatos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            txtIngresarDatos.ForeColor = SystemColors.ActiveCaptionText;
-            txtIngresarDatos.Location = new Point(584, 82);
-            txtIngresarDatos.Name = "txtIngresarDatos";
-            txtIngresarDatos.Size = new Size(173, 27);
-            txtIngresarDatos.TabIndex = 1;
-            txtIngresarDatos.Text = "INGRESAR DATOS";
+            lblIngresarDatos.AutoSize = true;
+            lblIngresarDatos.BackColor = Color.Transparent;
+            lblIngresarDatos.BorderStyle = BorderStyle.FixedSingle;
+            lblIngresarDatos.CausesValidation = false;
+            lblIngresarDatos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblIngresarDatos.ForeColor = SystemColors.ActiveCaptionText;
+            lblIngresarDatos.Location = new Point(584, 82);
+            lblIngresarDatos.Name = "lblIngresarDatos";
+            lblIngresarDatos.Size = new Size(173, 27);
+            lblIngresarDatos.TabIndex = 1;
+            lblIngresarDatos.Text = "INGRESAR DATOS";
             // 
             // TITULOPRINCIPAL
             // 
@@ -323,7 +323,7 @@
         private TextBox txtIngresarIterac;
         private TextBox txtIngresarDim;
         private ComboBox comboBoxMETODO;
-        private Label txtIngresarDatos;
+        private Label lblIngresarDatos;
         private Label TITULOPRINCIPAL;
         private Label lblSelMetodo;
         private Panel pnlMatriz;
