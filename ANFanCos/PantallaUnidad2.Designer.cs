@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaUnidad2));
             panelMenuPrincipal = new Panel();
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            pnlMatriz = new Panel();
             lblSelMetodo = new Label();
             btnGenMat = new Button();
             button1 = new Button();
@@ -49,7 +49,6 @@
             btnVolverMenu = new Button();
             panelMenuPrincipal.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panelMenuPrincipal
@@ -71,7 +70,7 @@
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(pnlMatriz);
             panel1.Controls.Add(lblSelMetodo);
             panel1.Controls.Add(btnGenMat);
             panel1.Controls.Add(button1);
@@ -91,13 +90,13 @@
             panel1.Size = new Size(1327, 663);
             panel1.TabIndex = 40;
             // 
-            // dataGridView1
+            // pnlMatriz
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(183, 222);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(914, 429);
-            dataGridView1.TabIndex = 40;
+            pnlMatriz.BackColor = SystemColors.Desktop;
+            pnlMatriz.Location = new Point(20, 232);
+            pnlMatriz.Name = "pnlMatriz";
+            pnlMatriz.Size = new Size(816, 409);
+            pnlMatriz.TabIndex = 40;
             // 
             // lblSelMetodo
             // 
@@ -118,7 +117,7 @@
             btnGenMat.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnGenMat.FlatStyle = FlatStyle.Flat;
             btnGenMat.Font = new Font("Century", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGenMat.Location = new Point(907, 123);
+            btnGenMat.Location = new Point(902, 146);
             btnGenMat.Name = "btnGenMat";
             btnGenMat.Size = new Size(190, 70);
             btnGenMat.TabIndex = 38;
@@ -179,12 +178,13 @@
             btnCALCULAR.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnCALCULAR.FlatStyle = FlatStyle.Flat;
             btnCALCULAR.Font = new Font("Century", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCALCULAR.Location = new Point(1116, 123);
+            btnCALCULAR.Location = new Point(1107, 146);
             btnCALCULAR.Name = "btnCALCULAR";
             btnCALCULAR.Size = new Size(190, 70);
             btnCALCULAR.TabIndex = 11;
             btnCALCULAR.Text = "CALCULAR";
             btnCALCULAR.UseVisualStyleBackColor = false;
+            btnCALCULAR.Click += btnCALCULAR_Click;
             // 
             // txtIngresartoler
             // 
@@ -292,7 +292,6 @@
             panelMenuPrincipal.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -315,6 +314,6 @@
         private Label txtIngresarDatos;
         private Label TITULOPRINCIPAL;
         private Label lblSelMetodo;
-        private DataGridView dataGridView1;
+        private Panel pnlMatriz;
     }
 }
