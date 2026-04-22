@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaUnidad2));
             panelMenuPrincipal = new Panel();
             panel1 = new Panel();
+            PanelFondo = new Panel();
             pnlMatriz = new Panel();
             lblSelMetodo = new Label();
             btnGenMat = new Button();
@@ -49,6 +50,7 @@
             btnVolverMenu = new Button();
             panelMenuPrincipal.SuspendLayout();
             panel1.SuspendLayout();
+            PanelFondo.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenuPrincipal
@@ -70,7 +72,7 @@
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(pnlMatriz);
+            panel1.Controls.Add(PanelFondo);
             panel1.Controls.Add(lblSelMetodo);
             panel1.Controls.Add(btnGenMat);
             panel1.Controls.Add(button1);
@@ -90,12 +92,21 @@
             panel1.Size = new Size(1327, 663);
             panel1.TabIndex = 40;
             // 
+            // PanelFondo
+            // 
+            PanelFondo.BackColor = SystemColors.Desktop;
+            PanelFondo.Controls.Add(pnlMatriz);
+            PanelFondo.Location = new Point(20, 226);
+            PanelFondo.Name = "PanelFondo";
+            PanelFondo.Size = new Size(816, 409);
+            PanelFondo.TabIndex = 41;
+            // 
             // pnlMatriz
             // 
             pnlMatriz.BackColor = SystemColors.Desktop;
-            pnlMatriz.Location = new Point(20, 232);
+            pnlMatriz.Location = new Point(181, 98);
             pnlMatriz.Name = "pnlMatriz";
-            pnlMatriz.Size = new Size(816, 409);
+            pnlMatriz.Size = new Size(584, 308);
             pnlMatriz.TabIndex = 40;
             // 
             // lblSelMetodo
@@ -292,6 +303,7 @@
             panelMenuPrincipal.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            PanelFondo.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -315,5 +327,6 @@
         private Label TITULOPRINCIPAL;
         private Label lblSelMetodo;
         private Panel pnlMatriz;
+        private Panel PanelFondo;
     }
 }

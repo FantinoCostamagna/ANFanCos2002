@@ -32,39 +32,57 @@ namespace ANFanCos
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        void button2_Click(object sender, EventArgs e)
         {
-            int dimension = int.Parse(txtIngresarDim.Text);
-
-            pnlMatriz.Controls.Clear(); // limpiar matriz anterior
-
-            int tamaño = 80; // tamaño de cada celda
-            int espacio = 10;
-
-            for (int i = 0; i < dimension; i++)
+            if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
             {
-                for (int j = 0; j < (dimension + 1); j++) // DIMENSION + 1 , Para agregar la columna de resultados
+                int dimension = int.Parse(txtIngresarDim.Text);
+
+                int columnaSeparadora = dimension; // última columna (resultados)
+
+                int espacioExtra = 40; // separación entre matriz y resultados
+
+                pnlMatriz.Controls.Clear(); // limpiar matriz anterior
+
+                int tamaño = 100; // tamaño de cada celda
+                int espacio = 10;
+
+                for (int i = 0; i < dimension; i++)
                 {
-                    TextBox txt = new TextBox();
+                    for (int j = 0; j < (dimension + 1); j++) // DIMENSION + 1 , Para agregar la columna de resultados
+                    {
+                        TextBox txt = new TextBox();
 
-                    txt.Width = tamaño;
-                    txt.Height = tamaño;
-                    txt.TextAlign = HorizontalAlignment.Center;
+                        txt.Width = tamaño;
+                        txt.Height = tamaño;
+                        txt.TextAlign = HorizontalAlignment.Center;
 
-                    // Posición
-                    txt.Left = j * (tamaño + espacio);
-                    txt.Top = i * (tamaño + espacio);
 
-                   
-                    // Color
-                    txt.BackColor = (i == j) ? Color.LightBlue : Color.Beige;
+                        int x = j * (tamaño + espacio);
 
-                    pnlMatriz.Controls.Add(txt);
+                        // si es la columna de resultados, agrego espacio extra
+                        if (j == columnaSeparadora)
+                        {
+                            x += espacioExtra;
+                        }
+
+                        // Posición
+                        txt.Left = x;
+                        txt.Top = i * (tamaño + espacio);
+
+                        // Color
+                        txt.BackColor = (i == j) ? Color.LightBlue : Color.Beige;
+                        txt.BackColor = (j == columnaSeparadora) ? Color.LightYellow : txt.BackColor; // Columna de resultados en amarillo
+
+                        pnlMatriz.Controls.Add(txt);
+                    }
+
+            
                 }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
             PantallaMenú pantallaMenú = new PantallaMenú();
@@ -72,38 +90,55 @@ namespace ANFanCos
             this.Close();
         }
 
-        private void btnCALCULAR_Click(object sender, EventArgs e)
+        void btnCALCULAR_Click(object sender, EventArgs e)
         {
-            int dimension = int.Parse(txtIngresarDim.Text);
-
-            pnlMatriz.Controls.Clear(); // limpiar matriz anterior
-
-            int tamaño = 80; // tamaño de cada celda
-            int espacio = 10;
-
-            for (int i = 0; i < dimension; i++)
+            if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
             {
-                for (int j = 0; j < dimension; j++)
+
+                int dimension = int.Parse(txtIngresarDim.Text);
+
+                int columnaSeparadora = dimension; // última columna (resultados)
+
+                int espacioExtra = 40; // separación entre matriz y resultados
+
+                pnlMatriz.Controls.Clear(); // limpiar matriz anterior
+
+                int tamaño = 100; // tamaño de cada celda
+                int espacio = 10;
+
+                for (int i = 0; i < dimension; i++)
                 {
-                    TextBox txt = new TextBox();
+                    for (int j = 0; j < (dimension + 1); j++) // DIMENSION + 1 , Para agregar la columna de resultados
+                    {
+                        TextBox txt = new TextBox();
 
-                    txt.Width = tamaño;
-                    txt.Height = tamaño;
-                    txt.TextAlign = HorizontalAlignment.Center;
+                        txt.Width = tamaño;
+                        txt.Height = tamaño;
+                        txt.TextAlign = HorizontalAlignment.Center;
 
-                    // Posición
-                    txt.Left = j * (tamaño + espacio);
-                    txt.Top = i * (tamaño + espacio);
 
-                    // Valores iniciales (como tu imagen)
-                    txt.Text = (i == j) ? "1" : "0";
+                        int x = j * (tamaño + espacio);
 
-                    // Color
-                    txt.BackColor = (i == j) ? Color.LightBlue : Color.Beige;
+                        // si es la columna de resultados, agrego espacio extra
+                        if (j == columnaSeparadora)
+                        {
+                            x += espacioExtra;
+                        }
 
-                    pnlMatriz.Controls.Add(txt);
+                        // Posición
+                        txt.Left = x;
+                        txt.Top = i * (tamaño + espacio);
+
+                        // Color
+                        txt.BackColor = (i == j) ? Color.LightBlue : Color.Beige;
+                        txt.BackColor = (j == columnaSeparadora) ? Color.IndianRed : txt.BackColor; // Columna de resultados en rojo
+
+                        pnlMatriz.Controls.Add(txt);
+                    }
                 }
+
             }
+
         }
     }
 }
