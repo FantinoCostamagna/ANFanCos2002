@@ -92,53 +92,78 @@ namespace ANFanCos
 
         void btnCALCULAR_Click(object sender, EventArgs e)
         {
-            if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
+            string metodo = comboBoxMETODO.SelectedItem?.ToString();
+
+            if (metodo == "Método: Gauss-Jordan")
             {
-
-                int dimension = int.Parse(txtIngresarDim.Text);
-
-                int columnaSeparadora = dimension; // última columna (resultados)
-
-                int espacioExtra = 40; // separación entre matriz y resultados
-
-                pnlMatriz.Controls.Clear(); // limpiar matriz anterior
-
-                int tamaño = 100; // tamaño de cada celda
-                int espacio = 10;
-
-                for (int i = 0; i < dimension; i++)
-                {
-                    for (int j = 0; j < (dimension + 1); j++) // DIMENSION + 1 , Para agregar la columna de resultados
-                    {
-                        TextBox txt = new TextBox();
-
-                        txt.Width = tamaño;
-                        txt.Height = tamaño;
-                        txt.TextAlign = HorizontalAlignment.Center;
-
-
-                        int x = j * (tamaño + espacio);
-
-                        // si es la columna de resultados, agrego espacio extra
-                        if (j == columnaSeparadora)
-                        {
-                            x += espacioExtra;
-                        }
-
-                        // Posición
-                        txt.Left = x;
-                        txt.Top = i * (tamaño + espacio);
-
-                        // Color
-                        txt.BackColor = (i == j) ? Color.LightBlue : Color.Beige;
-                        txt.BackColor = (j == columnaSeparadora) ? Color.IndianRed : txt.BackColor; // Columna de resultados en rojo
-
-                        pnlMatriz.Controls.Add(txt);
-                    }
-                }
+                GaussJordan();
 
             }
 
+        }
+
+        void GaussJordan()
+        {
+            int n = int.Parse(txtIngresarDim.Text);
+            double[,] matriz = new double[n, n + 1];
+
+            var controles = pnlMatriz.Controls.OfType<TextBox>().ToList();
+
+            // 1. LEER DATOS
+            int contador = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n + 1; j++)
+                {
+                    if (!double.TryParse(controles[contador].Text, out matriz[i, j]))
+                        matriz[i, j] = 0;
+                    contador++;
+                }
+            }
+
+
+            for (int rowDiag = 0; rowDiag < n; rowDiag++)
+            {
+                double coefDiag = matriz[rowDiag, rowDiag];
+
+
+                if (Math.Abs(coefDiag) < 1e-10) continue;
+
+                for (int j = 0; j < n + 1; j++)
+                    matriz[rowDiag, j] /= coefDiag;
+
+                for (int row = 0; row < n; row++)
+                {
+                    if (row != rowDiag)
+                    {
+                        double coefCero = matriz[row, rowDiag];
+                        for (int j = 0; j < n + 1; j++)
+                        {
+                            matriz[row, j] -= coefCero * matriz[rowDiag, j];
+                        }
+                    }
+                }
+            }
+
+            // 3. ACTUALIZAR INTERFAZ Y CAMBIAR COLOR A ROJO
+            contador = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n + 1; j++)
+                {
+
+                    controles[contador].Text = Math.Round(matriz[i, j], 4).ToString();
+
+
+                    if (j == n)
+                    {
+                        controles[contador].BackColor = Color.IndianRed;
+                        controles[contador].ForeColor = Color.White;
+                    }
+
+                    contador++;
+                }
+            }
         }
     }
 }
