@@ -77,7 +77,7 @@ namespace ANFanCos
                         pnlMatriz.Controls.Add(txt);
                     }
 
-            
+
                 }
             }
         }
@@ -93,9 +93,9 @@ namespace ANFanCos
         void btnCALCULAR_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtIngresarDim.Text) ||
-                (comboBoxMETODO.SelectedIndex == -1))
-            //string.IsNullOrWhiteSpace(txtIngresarIterac.Text) || 
-            //string.IsNullOrWhiteSpace(txtIngresartoler.Text) || Para cuando hagamos el Gauss seidel, lo ponemos dentro del if (comboboxmetodo = "gauss seidel")
+            (comboBoxMETODO.SelectedIndex == -1) ||
+            string.IsNullOrWhiteSpace(txtIngresartoler.Text))
+            //string.IsNullOrWhiteSpace(txtIngresarIterac.Text) || Para cuando hagamos el Gauss seidel, lo ponemos dentro del if (comboboxmetodo = "gauss seidel")
             {
                 MessageBox.Show("Tenés que completar todos los datos y elegir el método");
                 return;
@@ -105,8 +105,12 @@ namespace ANFanCos
             {
                 GaussJordan();
             }
+            else if (comboBoxMETODO.SelectedItem.ToString() == "Método: GaussSeidel")
+            {
+                GaussSeidel();
+            }
 
-            
+
 
         }
 
@@ -173,5 +177,11 @@ namespace ANFanCos
                 }
             }
         }
+        void GaussSeidel()
+        {
+            // Implementación del método 
+        }
     }
+
 }
+

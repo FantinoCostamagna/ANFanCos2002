@@ -456,7 +456,7 @@ namespace ANFanCos
 
                             error = Math.Abs((xr - xrAnterior) / xr);
 
-                            if (metodo == "Método abierto: Secante" && Math.Abs(fxr) < tolerancia || error < tolerancia) //es solo para que muestre correctamente el intervalo utilizado
+                            if (metodo == "Método abierto: Secante" && (Math.Abs(fxr) < tolerancia || error < tolerancia)) //es solo para que muestre correctamente el intervalo utilizado
                             {
                                 txtFuncionUtilizada.Text = funcion;
                                 txtRaiz.AppendText($" {xr.ToString("F5")}");
@@ -475,7 +475,7 @@ namespace ANFanCos
                                 return;
                             }
 
-                            if (metodo == "Método abierto: Newton-Raphson/Tangente" && Math.Abs(fxr) < tolerancia || error < tolerancia)
+                            if (metodo == "Método abierto: Newton-Raphson/Tangente" && (Math.Abs(fxr) < tolerancia || error < tolerancia))
                             {
                                 txtFuncionUtilizada.Text = funcion;
                                 txtRaiz.AppendText($" {xr.ToString("F5")}");
@@ -494,7 +494,7 @@ namespace ANFanCos
                                 return;
                             }
 
-                            else if (metodo == "Método abierto: Secante")
+                            else if (metodo == "Método abierto: Newton-Raphson/Tangente")
                             {
                                 xi = xr;
                             }
