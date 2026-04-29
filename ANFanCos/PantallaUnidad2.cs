@@ -101,14 +101,12 @@ namespace ANFanCos
                 return;
             }
 
-                if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
-            {
-
-            if (metodo == "Método: Gauss-Jordan")
+            if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
             {
                 GaussJordan();
-
             }
+
+            
 
         }
 
