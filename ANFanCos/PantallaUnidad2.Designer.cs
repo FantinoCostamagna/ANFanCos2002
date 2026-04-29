@@ -44,7 +44,7 @@
             txtIngresarIterac = new TextBox();
             txtIngresarDim = new TextBox();
             comboBoxMETODO = new ComboBox();
-            txtIngresarDatos = new Label();
+            lblIngresarDatos = new Label();
             TITULOPRINCIPAL = new Label();
             lblUNIDAD2 = new Label();
             btnVolverMenu = new Button();
@@ -84,7 +84,7 @@
             panel1.Controls.Add(txtIngresarIterac);
             panel1.Controls.Add(txtIngresarDim);
             panel1.Controls.Add(comboBoxMETODO);
-            panel1.Controls.Add(txtIngresarDatos);
+            panel1.Controls.Add(lblIngresarDatos);
             panel1.Controls.Add(TITULOPRINCIPAL);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
@@ -131,7 +131,7 @@
             btnGenMat.Location = new Point(902, 146);
             btnGenMat.Name = "btnGenMat";
             btnGenMat.Size = new Size(190, 70);
-            btnGenMat.TabIndex = 38;
+            btnGenMat.TabIndex = 5;
             btnGenMat.Text = "GENERAR MATRIZ";
             btnGenMat.UseVisualStyleBackColor = false;
             btnGenMat.Click += button2_Click;
@@ -143,7 +143,7 @@
             button1.Location = new Point(20, 11);
             button1.Name = "button1";
             button1.Size = new Size(111, 35);
-            button1.TabIndex = 36;
+            button1.TabIndex = 7;
             button1.Text = "VOLVER";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -192,7 +192,7 @@
             btnCALCULAR.Location = new Point(1107, 146);
             btnCALCULAR.Name = "btnCALCULAR";
             btnCALCULAR.Size = new Size(190, 70);
-            btnCALCULAR.TabIndex = 11;
+            btnCALCULAR.TabIndex = 6;
             btnCALCULAR.Text = "CALCULAR";
             btnCALCULAR.UseVisualStyleBackColor = false;
             btnCALCULAR.Click += btnCALCULAR_Click;
@@ -200,10 +200,10 @@
             // txtIngresartoler
             // 
             txtIngresartoler.Font = new Font("Segoe UI", 12F);
-            txtIngresartoler.Location = new Point(502, 161);
+            txtIngresartoler.Location = new Point(499, 158);
             txtIngresartoler.Name = "txtIngresartoler";
             txtIngresartoler.Size = new Size(162, 29);
-            txtIngresartoler.TabIndex = 8;
+            txtIngresartoler.TabIndex = 3;
             txtIngresartoler.Text = "0,0001";
             txtIngresartoler.TextAlign = HorizontalAlignment.Center;
             // 
@@ -213,7 +213,7 @@
             txtIngresarIterac.Location = new Point(702, 161);
             txtIngresarIterac.Name = "txtIngresarIterac";
             txtIngresarIterac.Size = new Size(162, 29);
-            txtIngresarIterac.TabIndex = 7;
+            txtIngresarIterac.TabIndex = 4;
             txtIngresarIterac.Text = "100";
             txtIngresarIterac.TextAlign = HorizontalAlignment.Center;
             // 
@@ -223,7 +223,7 @@
             txtIngresarDim.Location = new Point(307, 161);
             txtIngresarDim.Name = "txtIngresarDim";
             txtIngresarDim.Size = new Size(162, 29);
-            txtIngresarDim.TabIndex = 6;
+            txtIngresarDim.TabIndex = 2;
             txtIngresarDim.TextAlign = HorizontalAlignment.Center;
             // 
             // comboBoxMETODO
@@ -237,22 +237,22 @@
             comboBoxMETODO.Location = new Point(18, 158);
             comboBoxMETODO.Name = "comboBoxMETODO";
             comboBoxMETODO.Size = new Size(261, 33);
-            comboBoxMETODO.TabIndex = 5;
+            comboBoxMETODO.TabIndex = 1;
             comboBoxMETODO.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // txtIngresarDatos
+            // lblIngresarDatos
             // 
-            txtIngresarDatos.AutoSize = true;
-            txtIngresarDatos.BackColor = Color.Transparent;
-            txtIngresarDatos.BorderStyle = BorderStyle.FixedSingle;
-            txtIngresarDatos.CausesValidation = false;
-            txtIngresarDatos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            txtIngresarDatos.ForeColor = SystemColors.ActiveCaptionText;
-            txtIngresarDatos.Location = new Point(584, 82);
-            txtIngresarDatos.Name = "txtIngresarDatos";
-            txtIngresarDatos.Size = new Size(173, 27);
-            txtIngresarDatos.TabIndex = 1;
-            txtIngresarDatos.Text = "INGRESAR DATOS";
+            lblIngresarDatos.AutoSize = true;
+            lblIngresarDatos.BackColor = Color.Transparent;
+            lblIngresarDatos.BorderStyle = BorderStyle.FixedSingle;
+            lblIngresarDatos.CausesValidation = false;
+            lblIngresarDatos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblIngresarDatos.ForeColor = SystemColors.ActiveCaptionText;
+            lblIngresarDatos.Location = new Point(584, 82);
+            lblIngresarDatos.Name = "lblIngresarDatos";
+            lblIngresarDatos.Size = new Size(173, 27);
+            lblIngresarDatos.TabIndex = 100;
+            lblIngresarDatos.Text = "INGRESAR DATOS";
             // 
             // TITULOPRINCIPAL
             // 
@@ -323,7 +323,7 @@
         private TextBox txtIngresarIterac;
         private TextBox txtIngresarDim;
         private ComboBox comboBoxMETODO;
-        private Label txtIngresarDatos;
+        private Label lblIngresarDatos;
         private Label TITULOPRINCIPAL;
         private Label lblSelMetodo;
         private Panel pnlMatriz;
