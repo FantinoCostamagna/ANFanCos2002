@@ -104,9 +104,9 @@
             // pnlMatriz
             // 
             pnlMatriz.BackColor = SystemColors.Desktop;
-            pnlMatriz.Location = new Point(181, 98);
+            pnlMatriz.Location = new Point(130, 0);
             pnlMatriz.Name = "pnlMatriz";
-            pnlMatriz.Size = new Size(584, 308);
+            pnlMatriz.Size = new Size(768, 432);
             pnlMatriz.TabIndex = 40;
             // 
             // lblSelMetodo

@@ -34,17 +34,17 @@ namespace ANFanCos
 
         void button2_Click(object sender, EventArgs e)
         {
-            if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
+            if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan" || comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Seidel")
             {
-                int dimension = int.Parse(txtIngresarDim.Text);
+                double dimension = double.Parse(txtIngresarDim.Text);
 
-                int columnaSeparadora = dimension; // última columna (resultados)
+                double columnaSeparadora = dimension; // última columna (resultados)
 
-                int espacioExtra = 40; // separación entre matriz y resultados
+                int espacioExtra = 10; // separación entre matriz y resultados
 
                 pnlMatriz.Controls.Clear(); // limpiar matriz anterior
 
-                int tamaño = 100; // tamaño de cada celda
+                int tamaño = 75; // tamaño de cada celda
                 int espacio = 10;
 
                 for (int i = 0; i < dimension; i++)
@@ -95,7 +95,7 @@ namespace ANFanCos
             if (string.IsNullOrWhiteSpace(txtIngresarDim.Text) ||
             (comboBoxMETODO.SelectedIndex == -1) ||
             string.IsNullOrWhiteSpace(txtIngresartoler.Text))
-            //string.IsNullOrWhiteSpace(txtIngresarIterac.Text) || Para cuando hagamos el Gauss seidel, lo ponemos dentro del if (comboboxmetodo = "gauss seidel")
+
             {
                 MessageBox.Show("Tenés que completar todos los datos y elegir el método");
                 return;
@@ -105,7 +105,7 @@ namespace ANFanCos
             {
                 GaussJordan();
             }
-            else if (comboBoxMETODO.SelectedItem.ToString() == "Método: GaussSeidel")
+            else if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Seidel" && !string.IsNullOrWhiteSpace(txtIngresarIterac.Text))
             {
                 GaussSeidel();
             }
@@ -179,7 +179,99 @@ namespace ANFanCos
         }
         void GaussSeidel()
         {
-            // Implementación del método 
+            bool esSolucion = false;
+
+            double resultado = 0;
+            double tolerancia = double.Parse(txtIngresartoler.Text);
+            int n = int.Parse(txtIngresarDim.Text);
+            double[,] matriz = new double[n, n + 1];
+            double[] vectorResultado = new double[n];
+            vectorResultado.Initialize();
+            double[] vectorAnterior = new double[n];
+
+            
+            var controles = pnlMatriz.Controls.OfType<TextBox>().ToList();
+
+            // 1. LEER DATOS
+            int contador = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n + 1; j++)
+                {
+                    if (!double.TryParse(controles[contador].Text, out matriz[i, j]))
+                        matriz[i, j] = 0;
+                    contador++;
+                }
+            }
+
+            while (contador <= 100 && !esSolucion)
+            {
+                contador++;
+                if (contador > 1)
+                {
+                    vectorResultado.CopyTo(vectorAnterior, 0); // guardar resultado anterior para comparar
+                }
+
+                for (int row = 0; row < n; row++)
+                {
+                    resultado = matriz[row, n]; // resultado actual
+                    double coeficienteIncognita = matriz[row, row]; // coeficiente de la incógnita actual
+                    for (int col = 0; col < n; col++)
+                    {
+                        if (row != col)
+                        {
+                            resultado = resultado - matriz[row, col] * vectorResultado[col]; // restar contribución de otras incógnitas
+                        }   
+                    }
+                    coeficienteIncognita = resultado / coeficienteIncognita; // dividir por el coeficiente para obtener nuevo valor}
+                    vectorResultado[row] = coeficienteIncognita; // actualizar valor de la incógnita
+                }
+                double contadorMismoResultado = 0;
+                double errorRelativo = 0;
+
+                for (int i = 0; i < n; i++)
+                {
+                    errorRelativo = Math.Abs((vectorResultado[i] - vectorAnterior[i]) / vectorResultado[i]);
+
+                    if (errorRelativo < tolerancia)
+                        contadorMismoResultado++;
+                }
+
+                esSolucion = contadorMismoResultado == n; // si todas las incógnitas cumplen la condición, tenemos solución
+
+            }
+            
+            if (contador <= 100)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    matriz[i, n]= vectorResultado[i]; // actualizar columna de resultados con solución encontrada
+                }
+            }       
+            else
+            {
+                MessageBox.Show("Superó iteraciones");// no se encontró solución en el límite de iteraciones
+            }
+                
+
+            contador = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n + 1; j++)
+                {
+
+                    controles[contador].Text = Math.Round(matriz[i, j], 4).ToString();
+
+
+                    if (j == n)
+                    {
+                        controles[contador].BackColor = Color.IndianRed;
+                        controles[contador].ForeColor = Color.White;
+                    }
+
+                    contador++;
+                }
+            }
         }
     }
 
