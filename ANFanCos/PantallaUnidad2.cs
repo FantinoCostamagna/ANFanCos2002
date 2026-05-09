@@ -18,6 +18,7 @@ namespace ANFanCos
             InitializeComponent();
         }
 
+
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan")
@@ -34,22 +35,36 @@ namespace ANFanCos
 
         void button2_Click(object sender, EventArgs e)
         {
-            if (comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan" || comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Seidel")
+            if ((comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Jordan" ||
+                comboBoxMETODO.SelectedItem.ToString() == "Método: Gauss-Seidel") &&
+                !string.IsNullOrWhiteSpace(txtIngresarDim.Text))
             {
-                double dimension = double.Parse(txtIngresarDim.Text);
+                int dimension = int.Parse(txtIngresarDim.Text);
 
-                double columnaSeparadora = dimension; // última columna (resultados)
-
-                int espacioExtra = 10; // separación entre matriz y resultados
-
-                pnlMatriz.Controls.Clear(); // limpiar matriz anterior
-
-                int tamaño = 75; // tamaño de cada celda
+                int tamaño = 80;
                 int espacio = 10;
+                int espacioExtra = 40;
+
+                int columnaSeparadora = dimension; // última columna (resultados)
+
+                pnlMatriz.Controls.Clear();
+
+                // Calcular ancho total (incluye columna extra y separación)
+                int anchoTotal = (dimension + 1) * (tamaño + espacio) + espacioExtra;
+
+                // Calcular alto total
+                int altoTotal = dimension * (tamaño + espacio);
+
+                // Offsets para centrar
+                int offsetX = (pnlMatriz.Width - anchoTotal) / 2;
+                int offsetY = (pnlMatriz.Height - altoTotal) / 2;
+
+                // Por si no entra en el panel
+                pnlMatriz.AutoScroll = true;
 
                 for (int i = 0; i < dimension; i++)
                 {
-                    for (int j = 0; j < (dimension + 1); j++) // DIMENSION + 1 , Para agregar la columna de resultados
+                    for (int j = 0; j < (dimension + 1); j++) // +1 por resultados
                     {
                         TextBox txt = new TextBox();
 
@@ -57,28 +72,36 @@ namespace ANFanCos
                         txt.Height = tamaño;
                         txt.TextAlign = HorizontalAlignment.Center;
 
+                        // Posición X (centrada)
+                        int x = offsetX + j * (tamaño + espacio);
 
-                        int x = j * (tamaño + espacio);
-
-                        // si es la columna de resultados, agrego espacio extra
+                        // Separación extra antes de la columna de resultados
                         if (j == columnaSeparadora)
                         {
                             x += espacioExtra;
                         }
 
-                        // Posición
-                        txt.Left = x;
-                        txt.Top = i * (tamaño + espacio);
+                        // Posición Y (centrada)
+                        int y = offsetY + i * (tamaño + espacio);
 
-                        // Color
-                        txt.BackColor = (i == j) ? Color.LightBlue : Color.Beige;
-                        txt.BackColor = (j == columnaSeparadora) ? Color.LightYellow : txt.BackColor; // Columna de resultados en amarillo
+                        txt.Left = x;
+                        txt.Top = y;
+
+                        // Colores
+                        if (j == columnaSeparadora)
+                            txt.BackColor = Color.LightYellow; // resultados
+                        else if (i == j)
+                            txt.BackColor = Color.LightBlue;   // diagonal
+                        else
+                            txt.BackColor = Color.Beige;
 
                         pnlMatriz.Controls.Add(txt);
                     }
-
-
                 }
+            }
+            else
+            {
+                MessageBox.Show("Tenés que elegir un método e ingresar dimensión para generar la matriz");
             }
         }
 
@@ -109,9 +132,6 @@ namespace ANFanCos
             {
                 GaussSeidel();
             }
-
-
-
         }
 
         void GaussJordan()
@@ -133,10 +153,13 @@ namespace ANFanCos
                 }
             }
 
+            
 
             for (int rowDiag = 0; rowDiag < n; rowDiag++)
             {
-                double coefDiag = matriz[rowDiag, rowDiag];
+
+               
+                 double coefDiag = matriz[rowDiag, rowDiag];
 
 
                 if (Math.Abs(coefDiag) < 1e-10) continue;
@@ -157,6 +180,9 @@ namespace ANFanCos
                 }
             }
 
+
+
+
             // 3. ACTUALIZAR INTERFAZ Y CAMBIAR COLOR A ROJO
             contador = 0;
             for (int i = 0; i < n; i++)
@@ -165,6 +191,7 @@ namespace ANFanCos
                 {
 
                     controles[contador].Text = Math.Round(matriz[i, j], 4).ToString();
+                
 
 
                     if (j == n)
@@ -176,6 +203,7 @@ namespace ANFanCos
                     contador++;
                 }
             }
+        
         }
         void GaussSeidel()
         {
@@ -189,7 +217,7 @@ namespace ANFanCos
             vectorResultado.Initialize();
             double[] vectorAnterior = new double[n];
 
-            
+
             var controles = pnlMatriz.Controls.OfType<TextBox>().ToList();
 
             // 1. LEER DATOS
@@ -203,6 +231,9 @@ namespace ANFanCos
                     contador++;
                 }
             }
+
+            
+
 
             while (contador <= 100 && !esSolucion)
             {
@@ -221,9 +252,9 @@ namespace ANFanCos
                         if (row != col)
                         {
                             resultado = resultado - matriz[row, col] * vectorResultado[col]; // restar contribución de otras incógnitas
-                        }   
+                        }
                     }
-                    coeficienteIncognita = resultado / coeficienteIncognita; // dividir por el coeficiente para obtener nuevo valor}
+                    coeficienteIncognita = resultado / coeficienteIncognita; // dividir por el coeficiente para obtener nuevo valor
                     vectorResultado[row] = coeficienteIncognita; // actualizar valor de la incógnita
                 }
                 double contadorMismoResultado = 0;
@@ -240,19 +271,19 @@ namespace ANFanCos
                 esSolucion = contadorMismoResultado == n; // si todas las incógnitas cumplen la condición, tenemos solución
 
             }
-            
+
             if (contador <= 100)
             {
                 for (int i = 0; i < n; i++)
                 {
-                    matriz[i, n]= vectorResultado[i]; // actualizar columna de resultados con solución encontrada
+                    matriz[i, n] = vectorResultado[i]; // actualizar columna de resultados con solución encontrada
                 }
-            }       
+            }
             else
             {
                 MessageBox.Show("Superó iteraciones");// no se encontró solución en el límite de iteraciones
             }
-                
+
 
             contador = 0;
             for (int i = 0; i < n; i++)
@@ -261,6 +292,7 @@ namespace ANFanCos
                 {
 
                     controles[contador].Text = Math.Round(matriz[i, j], 4).ToString();
+                   
 
 
                     if (j == n)
@@ -272,8 +304,9 @@ namespace ANFanCos
                     contador++;
                 }
             }
+            
         }
-    }
 
+    }
 }
 

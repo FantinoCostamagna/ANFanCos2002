@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaUnidad2));
             panelMenuPrincipal = new Panel();
             panel1 = new Panel();
-            PanelFondo = new Panel();
             pnlMatriz = new Panel();
             lblSelMetodo = new Label();
             btnGenMat = new Button();
@@ -50,7 +49,6 @@
             btnVolverMenu = new Button();
             panelMenuPrincipal.SuspendLayout();
             panel1.SuspendLayout();
-            PanelFondo.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenuPrincipal
@@ -72,7 +70,7 @@
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(PanelFondo);
+            panel1.Controls.Add(pnlMatriz);
             panel1.Controls.Add(lblSelMetodo);
             panel1.Controls.Add(btnGenMat);
             panel1.Controls.Add(button1);
@@ -92,21 +90,12 @@
             panel1.Size = new Size(1327, 663);
             panel1.TabIndex = 40;
             // 
-            // PanelFondo
-            // 
-            PanelFondo.BackColor = SystemColors.Desktop;
-            PanelFondo.Controls.Add(pnlMatriz);
-            PanelFondo.Location = new Point(20, 226);
-            PanelFondo.Name = "PanelFondo";
-            PanelFondo.Size = new Size(816, 409);
-            PanelFondo.TabIndex = 41;
-            // 
             // pnlMatriz
             // 
             pnlMatriz.BackColor = SystemColors.Desktop;
-            pnlMatriz.Location = new Point(130, 0);
+            pnlMatriz.Location = new Point(96, 197);
             pnlMatriz.Name = "pnlMatriz";
-            pnlMatriz.Size = new Size(768, 432);
+            pnlMatriz.Size = new Size(768, 462);
             pnlMatriz.TabIndex = 40;
             // 
             // lblSelMetodo
@@ -128,9 +117,9 @@
             btnGenMat.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnGenMat.FlatStyle = FlatStyle.Flat;
             btnGenMat.Font = new Font("Century", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGenMat.Location = new Point(902, 146);
+            btnGenMat.Location = new Point(905, 161);
             btnGenMat.Name = "btnGenMat";
-            btnGenMat.Size = new Size(190, 70);
+            btnGenMat.Size = new Size(395, 70);
             btnGenMat.TabIndex = 5;
             btnGenMat.Text = "GENERAR MATRIZ";
             btnGenMat.UseVisualStyleBackColor = false;
@@ -189,9 +178,9 @@
             btnCALCULAR.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnCALCULAR.FlatStyle = FlatStyle.Flat;
             btnCALCULAR.Font = new Font("Century", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCALCULAR.Location = new Point(1107, 146);
+            btnCALCULAR.Location = new Point(905, 265);
             btnCALCULAR.Name = "btnCALCULAR";
-            btnCALCULAR.Size = new Size(190, 70);
+            btnCALCULAR.Size = new Size(395, 70);
             btnCALCULAR.TabIndex = 6;
             btnCALCULAR.Text = "CALCULAR";
             btnCALCULAR.UseVisualStyleBackColor = false;
@@ -303,7 +292,6 @@
             panelMenuPrincipal.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            PanelFondo.ResumeLayout(false);
             ResumeLayout(false);
         }
 
