@@ -76,6 +76,7 @@ namespace ANFanCos
 
         void RegresíonLineal()
         {
+            
 
             PuntosCargados.Clear();
             string input = txtPuntosIngresados.Text.Trim();
@@ -190,44 +191,48 @@ namespace ANFanCos
 
             void RegresionPolinomial()
             {
-                PuntosCargados.Clear();
-                string input = txtPuntosIngresados.Text.Trim();
-
-                if (string.IsNullOrEmpty(input))
+                if (!string.IsNullOrWhiteSpace(txtGrado.Text))
                 {
-                    MessageBox.Show("Ingrese al menos un punto en el formato x,y (uno por línea).");
-                    return;
-                }
+                    PuntosCargados.Clear();
+                    string input = txtPuntosIngresados.Text.Trim();
 
-                // Usamos InvariantCulture para aceptar punto como decimal siempre
-                var culture = System.Globalization.CultureInfo.InvariantCulture;
-
-                string[] lineas = input.Split(new char[] { '\n', '\r' },
-                                              StringSplitOptions.RemoveEmptyEntries);
-
-                foreach (string linea in lineas)
-                {
-                    string[] partes = linea.Trim().Split(',');
-                    if (partes.Length == 2 &&
-                        double.TryParse(partes[0].Trim(), System.Globalization.NumberStyles.Any, culture, out double x) &&
-                        double.TryParse(partes[1].Trim(), System.Globalization.NumberStyles.Any, culture, out double y))
+                    if (string.IsNullOrEmpty(input))
                     {
-                        PuntosCargados.Add(new double[] { x, y });
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Formato inválido en la línea: \"{linea}\"\n" +
-                                        "Use el formato: x,y  (con punto como decimal, ej: 1.5,3.75)");
-                        PuntosCargados.Clear();
+                        MessageBox.Show("Ingrese al menos un punto en el formato x,y (uno por línea).");
                         return;
                     }
-                }
 
-                GenerarMatrizPolinomial();
+                
+                    var culture = System.Globalization.CultureInfo.InvariantCulture;
+
+                    string[] lineas = input.Split(new char[] { '\n', '\r' },
+                                                  StringSplitOptions.RemoveEmptyEntries);
+
+                    foreach (string linea in lineas)
+                    {
+                        string[] partes = linea.Trim().Split(',');
+                        if (partes.Length == 2 &&
+                            double.TryParse(partes[0].Trim(), System.Globalization.NumberStyles.Any, culture, out double x) &&
+                            double.TryParse(partes[1].Trim(), System.Globalization.NumberStyles.Any, culture, out double y))
+                        {
+                            PuntosCargados.Add(new double[] { x, y });
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Formato inválido en la línea: \"{linea}\"\n" +
+                                            "Use el formato: x,y  (con punto como decimal, ej: 1.5,3.75)");
+                            PuntosCargados.Clear();
+                            return;
+                        }
+                    }
+                    GenerarMatrizPolinomial();
+                }
+                
             }
 
             void GenerarMatrizPolinomial()
             {
+                
                 double[] vectorResultado = Array.Empty<double>();
                 double TOLERANCIA = double.Parse(txtTolerancia.Text);
                 int n = PuntosCargados.Count;
