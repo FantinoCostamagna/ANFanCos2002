@@ -31,6 +31,7 @@
             btnVolverMenu = new Button();
             TITULOPRINCIPAL = new Label();
             panel7 = new Panel();
+            label11 = new Label();
             lblFuncObt = new Label();
             txtArea = new TextBox();
             txtMotivoDeSalida = new TextBox();
@@ -57,7 +58,6 @@
             label9 = new Label();
             label10 = new Label();
             label3 = new Label();
-            label11 = new Label();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView22).BeginInit();
             panel1.SuspendLayout();
@@ -73,6 +73,7 @@
             btnVolverMenu.TabIndex = 81;
             btnVolverMenu.Text = "VOLVER";
             btnVolverMenu.UseVisualStyleBackColor = false;
+            btnVolverMenu.Click += btnVolverMenu_Click;
             // 
             // TITULOPRINCIPAL
             // 
@@ -101,6 +102,19 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(699, 608);
             panel7.TabIndex = 82;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.BorderStyle = BorderStyle.FixedSingle;
+            label11.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.ActiveCaptionText;
+            label11.Location = new Point(15, 135);
+            label11.Name = "label11";
+            label11.Size = new Size(174, 27);
+            label11.TabIndex = 70;
+            label11.Text = "Valor real del area";
             // 
             // lblFuncObt
             // 
@@ -419,19 +433,6 @@
             label3.Size = new Size(81, 21);
             label3.TabIndex = 69;
             label3.Text = "Extremos";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.BorderStyle = BorderStyle.FixedSingle;
-            label11.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label11.ForeColor = SystemColors.ActiveCaptionText;
-            label11.Location = new Point(15, 135);
-            label11.Name = "label11";
-            label11.Size = new Size(174, 27);
-            label11.TabIndex = 70;
-            label11.Text = "Valor real del area";
             // 
             // PantallaUnidad4
             // 

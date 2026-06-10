@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaMenú));
             panelMenuPrincipal = new Panel();
+            label2 = new Label();
+            label1 = new Label();
             lblUNIDAD2 = new Label();
             pictureBox1 = new PictureBox();
             labelAPPanalisisnumerico = new Label();
             btnVolverMenu = new Button();
             lblUNIDAD1 = new Label();
-            label1 = new Label();
-            label2 = new Label();
             panelMenuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -58,6 +58,34 @@
             panelMenuPrincipal.Name = "panelMenuPrincipal";
             panelMenuPrincipal.Size = new Size(1308, 643);
             panelMenuPrincipal.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Beige;
+            label2.BorderStyle = BorderStyle.FixedSingle;
+            label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label2.Location = new Point(394, 392);
+            label2.Name = "label2";
+            label2.Size = new Size(506, 39);
+            label2.TabIndex = 41;
+            label2.Text = "UNIDAD 4:  INTEGRACIÓN NUMÉRICA";
+            label2.TextAlign = ContentAlignment.TopCenter;
+            label2.Click += label2_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Beige;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label1.Location = new Point(394, 314);
+            label1.Name = "label1";
+            label1.Size = new Size(416, 39);
+            label1.TabIndex = 40;
+            label1.Text = "UNIDAD 3: AJUSTE DE CURVAS";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            label1.Click += label1_Click_1;
             // 
             // lblUNIDAD2
             // 
@@ -119,33 +147,6 @@
             lblUNIDAD1.Text = "UNIDAD 1: RAÍCES DE FUNCIONES";
             lblUNIDAD1.TextAlign = ContentAlignment.TopCenter;
             lblUNIDAD1.Click += lblUNIDAD1_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Beige;
-            label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(394, 314);
-            label1.Name = "label1";
-            label1.Size = new Size(416, 39);
-            label1.TabIndex = 40;
-            label1.Text = "UNIDAD 3: AJUSTE DE CURVAS";
-            label1.TextAlign = ContentAlignment.TopCenter;
-            label1.Click += label1_Click_1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Beige;
-            label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label2.Location = new Point(394, 392);
-            label2.Name = "label2";
-            label2.Size = new Size(506, 39);
-            label2.TabIndex = 41;
-            label2.Text = "UNIDAD 4:  INTEGRACIÓN NUMÉRICA";
-            label2.TextAlign = ContentAlignment.TopCenter;
             // 
             // PantallaMenú
             // 

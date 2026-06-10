@@ -48,5 +48,12 @@ namespace ANFanCos
             PantallaUnidad3 APP = new PantallaUnidad3();
             APP.Show();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PantallaUnidad4 APP = new PantallaUnidad4();
+            APP.Show();
+        }
     }
 }
