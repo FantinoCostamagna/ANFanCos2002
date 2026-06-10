@@ -57,6 +57,7 @@
             btnEditar = new Button();
             btnBorrarTodos = new Button();
             btnBorrarUltimo = new Button();
+            panel3 = new Panel();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView22).BeginInit();
             panel1.SuspendLayout();
@@ -163,7 +164,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label3.Location = new Point(286, 244);
+            label3.Location = new Point(244, 248);
             label3.Name = "label3";
             label3.Size = new Size(150, 21);
             label3.TabIndex = 54;
@@ -178,9 +179,9 @@
             btnCALCULAR.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnCALCULAR.FlatStyle = FlatStyle.Flat;
             btnCALCULAR.Font = new Font("Century", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCALCULAR.Location = new Point(474, 129);
+            btnCALCULAR.Location = new Point(439, 509);
             btnCALCULAR.Name = "btnCALCULAR";
-            btnCALCULAR.Size = new Size(188, 52);
+            btnCALCULAR.Size = new Size(215, 73);
             btnCALCULAR.TabIndex = 53;
             btnCALCULAR.Text = "CALCULAR";
             btnCALCULAR.UseVisualStyleBackColor = false;
@@ -188,6 +189,7 @@
             // 
             // txtIngresarint2
             // 
+            txtIngresarint2.Enabled = false;
             txtIngresarint2.Font = new Font("Segoe UI", 12F);
             txtIngresarint2.Location = new Point(207, 23);
             txtIngresarint2.Name = "txtIngresarint2";
@@ -198,6 +200,7 @@
             // 
             // txtIngresarint1
             // 
+            txtIngresarint1.Enabled = false;
             txtIngresarint1.Font = new Font("Segoe UI", 12F);
             txtIngresarint1.Location = new Point(123, 23);
             txtIngresarint1.Name = "txtIngresarint1";
@@ -210,11 +213,11 @@
             // 
             txtPuntosIngresados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txtPuntosIngresados.Font = new Font("Segoe UI", 12F);
-            txtPuntosIngresados.Location = new Point(123, 278);
+            txtPuntosIngresados.Location = new Point(244, 275);
             txtPuntosIngresados.MaximumSize = new Size(500, 500);
             txtPuntosIngresados.Multiline = true;
             txtPuntosIngresados.Name = "txtPuntosIngresados";
-            txtPuntosIngresados.Size = new Size(500, 248);
+            txtPuntosIngresados.Size = new Size(150, 307);
             txtPuntosIngresados.TabIndex = 48;
             txtPuntosIngresados.TextAlign = HorizontalAlignment.Center;
             // 
@@ -266,9 +269,9 @@
             webView22.BackColor = SystemColors.ButtonHighlight;
             webView22.CreationProperties = null;
             webView22.DefaultBackgroundColor = Color.White;
-            webView22.Location = new Point(15, 241);
+            webView22.Location = new Point(15, 213);
             webView22.Name = "webView22";
-            webView22.Size = new Size(666, 362);
+            webView22.Size = new Size(666, 390);
             webView22.TabIndex = 60;
             webView22.ZoomFactor = 1D;
             // 
@@ -276,11 +279,11 @@
             // 
             panel1.BackColor = SystemColors.GradientInactiveCaption;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(txtPuntosIngresados);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(txtGrado);
             panel1.Controls.Add(lblGrado);
             panel1.Controls.Add(txtTolerancia);
-            panel1.Controls.Add(txtPuntosIngresados);
             panel1.Controls.Add(lblTolerancia);
             panel1.Controls.Add(btnEditar);
             panel1.Controls.Add(btnBorrarTodos);
@@ -290,6 +293,7 @@
             panel1.Controls.Add(label6);
             panel1.Controls.Add(txtIngresarint1);
             panel1.Controls.Add(txtIngresarint2);
+            panel1.Controls.Add(panel3);
             panel1.Location = new Point(12, 104);
             panel1.Name = "panel1";
             panel1.Size = new Size(669, 608);
@@ -297,13 +301,14 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.Transparent;
+            panel2.BackColor = Color.White;
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(label1);
             panel2.Controls.Add(comboBoxTIPO);
-            panel2.Location = new Point(412, 3);
+            panel2.Location = new Point(362, 73);
+            panel2.Margin = new Padding(6);
             panel2.Name = "panel2";
-            panel2.Size = new Size(252, 117);
+            panel2.Size = new Size(252, 132);
             panel2.TabIndex = 84;
             // 
             // label1
@@ -311,7 +316,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 17F, FontStyle.Bold | FontStyle.Underline);
-            label1.Location = new Point(26, 10);
+            label1.Location = new Point(29, 11);
             label1.Name = "label1";
             label1.Size = new Size(196, 31);
             label1.TabIndex = 81;
@@ -325,7 +330,7 @@
             comboBoxTIPO.FormattingEnabled = true;
             comboBoxTIPO.ImeMode = ImeMode.Disable;
             comboBoxTIPO.Items.AddRange(new object[] { "REGRESIÓN LINEAL", "REGRESIÓN POLINOMIAL" });
-            comboBoxTIPO.Location = new Point(19, 45);
+            comboBoxTIPO.Location = new Point(22, 67);
             comboBoxTIPO.Name = "comboBoxTIPO";
             comboBoxTIPO.Size = new Size(210, 33);
             comboBoxTIPO.TabIndex = 80;
@@ -383,10 +388,10 @@
             btnEditar.FlatAppearance.MouseDownBackColor = Color.Gray;
             btnEditar.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Century", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditar.Location = new Point(476, 532);
+            btnEditar.Font = new Font("Century", 10F, FontStyle.Bold);
+            btnEditar.Location = new Point(42, 340);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(162, 40);
+            btnEditar.Size = new Size(152, 51);
             btnEditar.TabIndex = 62;
             btnEditar.Text = "EDITAR";
             btnEditar.UseVisualStyleBackColor = false;
@@ -400,9 +405,9 @@
             btnBorrarTodos.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnBorrarTodos.FlatStyle = FlatStyle.Flat;
             btnBorrarTodos.Font = new Font("Century", 10F, FontStyle.Bold);
-            btnBorrarTodos.Location = new Point(288, 532);
+            btnBorrarTodos.Location = new Point(42, 516);
             btnBorrarTodos.Name = "btnBorrarTodos";
-            btnBorrarTodos.Size = new Size(162, 40);
+            btnBorrarTodos.Size = new Size(152, 54);
             btnBorrarTodos.TabIndex = 61;
             btnBorrarTodos.Text = "BORRAR TODOS";
             btnBorrarTodos.UseVisualStyleBackColor = false;
@@ -416,13 +421,22 @@
             btnBorrarUltimo.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnBorrarUltimo.FlatStyle = FlatStyle.Flat;
             btnBorrarUltimo.Font = new Font("Century", 10F, FontStyle.Bold);
-            btnBorrarUltimo.Location = new Point(99, 532);
+            btnBorrarUltimo.Location = new Point(42, 426);
             btnBorrarUltimo.Name = "btnBorrarUltimo";
-            btnBorrarUltimo.Size = new Size(162, 40);
+            btnBorrarUltimo.Size = new Size(152, 55);
             btnBorrarUltimo.TabIndex = 60;
             btnBorrarUltimo.Text = "BORRAR ULTIMO";
             btnBorrarUltimo.UseVisualStyleBackColor = false;
             btnBorrarUltimo.Click += btnBorrarUltimo_Click;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Transparent;
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Location = new Point(33, 329);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(168, 253);
+            panel3.TabIndex = 85;
             // 
             // PantallaUnidad3
             // 
@@ -478,6 +492,7 @@
         private Panel panel2;
         private TextBox txtGrado;
         private Label lblGrado;
+        private Panel panel3;
         //private EventHandler PantallaUnidad3_Load;
     }
 }
