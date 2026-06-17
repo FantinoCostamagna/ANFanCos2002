@@ -41,9 +41,10 @@ namespace ANFanCos
 
         private void btnCALCULAR_Click(object sender, EventArgs e)
         {
+            // 1. Validaciones de consistencia de la interfaz
             if (string.IsNullOrWhiteSpace(txtFuncion.Text) ||
-           string.IsNullOrWhiteSpace(txtXi.Text) ||
-           string.IsNullOrWhiteSpace(txtXd.Text))
+                string.IsNullOrWhiteSpace(txtXi.Text) ||
+                string.IsNullOrWhiteSpace(txtXd.Text))
             {
                 MessageBox.Show("Tenés que completar la función y los límites obligatoriamente.");
                 return;
@@ -54,10 +55,8 @@ namespace ANFanCos
             double xd = double.Parse(txtXd.Text);
             int n = 0;
 
-            // Instanciamos la librería Calculus
             Calculo Funcion = new Calculo();
 
-            // Verificar sintaxis de la función respecto a 'x'
             if (!Funcion.Sintaxis(funcion, 'x'))
             {
                 txtMotivoDeSalida.Text = "Función mal ingresada. Revisar sintaxis.";
@@ -65,7 +64,6 @@ namespace ANFanCos
                 return;
             }
 
-            // Es una función válida, actualizamos los datos de control en la interfaz
             txtFunIngresada.Text = funcion;
             txtLimInferior.Text = xi.ToString();
             txtLimSuperior.Text = xd.ToString();
@@ -74,27 +72,31 @@ namespace ANFanCos
             double areaFinal = 0;
             string metodoSeleccionado = comboBoxMETODO.SelectedItem.ToString();
 
+            // 2. Selección y ejecución según las estructuras del PDF de la cátedra
             if (metodoSeleccionado == "Trapecios Simple")
             {
-                areaFinal = (Funcion.EvaluaFx(xi) + Funcion.EvaluaFx(xd)) * (xd - xi) / 2.0;
+                // Pág 1: ((Funcion.EvaluaFx(xi) + Funcion.EvaluaFx(xd)) * (xd - xi)) / 2
+                areaFinal = ((Funcion.EvaluaFx(xi) + Funcion.EvaluaFx(xd)) * (xd - xi)) / 2.0;
             }
             else if (metodoSeleccionado == "Trapecios Múltiple")
             {
                 if (!ValidarSubintervalos(out n)) return;
-                double hTemp = (xd - xi) / n;
-                double sumaTrapecios = 0;
+                double h = (xd - xi) / n;
+                double sum = 0;
+
                 for (int i = 1; i < n; i++)
                 {
-                    sumaTrapecios += Funcion.EvaluaFx(xi + hTemp * i);
+                    sum += Funcion.EvaluaFx(xi + h * i);
                 }
-                areaFinal = (hTemp / 2.0) * (Funcion.EvaluaFx(xi) + 2.0 * sumaTrapecios + Funcion.EvaluaFx(xd));
+
+              
+                areaFinal = (h / 2.0) * (Funcion.EvaluaFx(xi) + 2.0 * sum + Funcion.EvaluaFx(xd));
             }
             else if (metodoSeleccionado == "Simpson 1/3 Simple")
             {
-                // Simpson 1/3 Simple requiere dividir el intervalo en 2 partes (h = (xd - xi) / 2)
-                double hSimpSimple = (xd - xi) / 2.0;
-                double x1 = xi + hSimpSimple; // Punto medio
-                areaFinal = (hSimpSimple / 3.0) * (Funcion.EvaluaFx(xi) + 4.0 * Funcion.EvaluaFx(x1) + Funcion.EvaluaFx(xd));
+                // Pág 2: h = (xd - xi) / 2
+                double h = (xd - xi) / 2.0;
+                areaFinal = (h / 3.0) * (Funcion.EvaluaFx(xi) + 4.0 * Funcion.EvaluaFx(xi + h) + Funcion.EvaluaFx(xd));
             }
             else if (metodoSeleccionado == "Simpson 1/3 Múltiple")
             {
@@ -105,23 +107,33 @@ namespace ANFanCos
                     txtArea.Text = "0";
                     return;
                 }
-                areaFinal = CalcularSimpson13Multiple(Funcion, xi, xd, n);
+
+                double h = (xd - xi) / n;
+                double sumPares = 0, sumImpares = 0;
+
+                for (int i = 1; i < n; i++)
+                {
+                    if (i % 2 == 0)
+                        sumPares += Funcion.EvaluaFx(xi + h * i);
+                    else
+                        sumImpares += Funcion.EvaluaFx(xi + h * i);
+                }
+                areaFinal = (h / 3.0) * (Funcion.EvaluaFx(xi) + 4.0 * sumImpares + 2.0 * sumPares + Funcion.EvaluaFx(xd));
             }
             else if (metodoSeleccionado == "Simpson 3/8")
             {
-                double h38 = (xd - xi) / 3.0;
-                areaFinal = (3.0 * h38 / 8.0) * (Funcion.EvaluaFx(xi) + 3.0 * Funcion.EvaluaFx(xi + h38) + 3.0 * Funcion.EvaluaFx(xi + 2.0 * h38) + Funcion.EvaluaFx(xd));
+                // Pág 2: h = (xd - xi) / 3
+                double h = (xd - xi) / 3.0;
+                areaFinal = (3.0 * h / 8.0) * (Funcion.EvaluaFx(xi) + 3.0 * Funcion.EvaluaFx(xi + h) + 3.0 * Funcion.EvaluaFx(xi + 2.0 * h) + Funcion.EvaluaFx(xd));
             }
             else if (metodoSeleccionado == "Simpson 1/3 M. y 3/8 Combinados")
             {
                 if (!ValidarSubintervalos(out n)) return;
-                areaFinal = CalcularCombinado(Funcion, xi, xd, n);
+                areaFinal = CalcularCombinado(Funcion, funcion, xi, xd, n);
             }
 
-            // Mostrar el resultado redondeado a 4 decimales
+            // 3. Imprimir resultado y refrescar el lienzo gráfico
             txtArea.Text = Math.Round(areaFinal, 4).ToString();
-
-            // Graficación
             GraficarIntegracionConHTML(funcion, xi, xd, n, metodoSeleccionado);
         }
 
@@ -143,7 +155,7 @@ namespace ANFanCos
             return (h / 3.0) * (Funcion.EvaluaFx(xi) + 4.0 * sumImpares + 2.0 * sumPares + Funcion.EvaluaFx(xd));
         }
 
-        private double CalcularCombinado(Calculo Funcion, double xi, double xd, int n)
+        private double CalcularCombinado(Calculo Funcion, string funcion, double xi, double xd, int n)
         {
             double h = (xd - xi) / n;
             double resultado = 0;
@@ -190,37 +202,39 @@ namespace ANFanCos
             string sXi = xi.ToString(culture);
             string sXd = xd.ToString(culture);
 
-            // 1. Limpiamos por completo el lienzo de GeoGebra
+            string funcionParaGeoGebra = funcion.ToUpper()
+                                         .Replace("LOG", "ln")
+                                         .Replace("LN", "ln")
+                                         .Replace("EXP", "exp")
+                                         .Replace("X", "x") 
+                                         .Replace(" ", "");
+
+            // Limpiamos el lienzo de GeoGebra
             _ = webView22.CoreWebView2.ExecuteScriptAsync("ggbApplet.reset();");
 
             string comandoArea;
-            // Si es Trapecios Múltiple, usamos TrapezoidalSum (Comando oficial en inglés)
             if (metodo == "Trapecios Múltiple" && n > 0)
             {
                 comandoArea = $"ggbApplet.evalCommand(\"AreaPintada = TrapezoidalSum(f, {sXi}, {sXd}, {n})\");";
             }
             else
             {
-                // Para los demás métodos usamos Integral
                 comandoArea = $"ggbApplet.evalCommand(\"AreaPintada = Integral(f, {sXi}, {sXd})\");";
             }
 
-            // 2. Armamos el bloque de comandos estructurado correctamente
+            // Enviamos la función ya traducida de forma limpia
             string comandosDibujo =
-                $"ggbApplet.evalCommand(\"f(x) = {funcion}\");\n" +
+                $"ggbApplet.evalCommand(\"f(x) = {funcionParaGeoGebra}\");\n" +
                 comandoArea + "\n" +
                 "ggbApplet.setColor('f', 30, 100, 200);\n" +
                 "ggbApplet.setLineThickness('f', 4);\n" +
                 "ggbApplet.setColor('AreaPintada', 0, 180, 50);";
 
-            // Corrigo el '表达 =' por la declaración limpia del setTimeout en JS
             string scriptFinal = $"表达 = setTimeout(function() {{ {comandosDibujo} }}, 100);";
-
-            // 3. Ejecutamos de manera asíncrona en el WebView2
             _ = webView22.CoreWebView2.ExecuteScriptAsync(scriptFinal);
         }
 
-       
+
 
         private void btnVolverMenu_Click(object sender, EventArgs e)
         {
